@@ -9,7 +9,7 @@ const App ={
             chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
             hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
             equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
-            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s7.5/624x318/",
+            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s10/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
         }
     },

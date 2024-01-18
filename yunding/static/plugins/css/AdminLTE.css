@@ -29,6 +29,7 @@ body {
   position: relative;
   overflow-x: scroll;
   overflow-y: auto;
+  width: 100%;
 }
 .wrapper:before,
 .wrapper:after {

@@ -175,7 +175,7 @@ html {
 }
 
 .linup-list {
-    width: 1584px;
+    width: auto;
     margin: 0 auto;
 }
 
@@ -208,12 +208,11 @@ html {
     position: relative;
     color: #fff5e0;
     font-size: .18rem;
-    width: 30%;
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
     line-height: 1.3rem;
     letter-spacing: .02rem;
+    margin-right: 1%;
 }
 
 .lineup-item .lineup-info .lineup-hex {
@@ -442,31 +441,30 @@ a {
 }
 
 .lineup-item .lineup-info .lineup-link:before {
+    background: rgba(255,255,255,.05);
     content: "";
     position: absolute;
     top: 50%;
     left: 0;
-    margin: -.54rem 0 0;
+    margin: -0.54rem 0 0;
     width: 1px;
     height: 1.08rem;
-    background: #2b3541;
 }
 
 .lineup-item .lineup-info .lineup-link:after {
+    background-position: -1.72rem -1.73rem;
+    width: 0.11rem;
+    height: 0.14rem;
+    right: 0.4rem;
+    margin: -0.065rem 0 0;
+
+    background-image: url(//game.gtimg.cn/images/lol/tft/content-site/spr-default-theme.png?2023_11_15_15_36_57);
+    background-size: 4.84rem 2.72rem;
+    background-repeat: no-repeat;
+
     content: "";
-    background-position: -3.42rem -1.79rem;
-    width: .1rem;
-    height: .13rem;
     position: absolute;
     top: 50%;
-    right: .42rem;
-    margin: -.065rem 0 0;
-}
-
-.lineup-item .lineup-info .lineup-link:after {
-    background-image: url("https://game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?2023_11_15_15_36_57");
-    background-size: 4.4rem 3.8rem;
-    background-repeat: no-repeat;
 }
 
 .content-header {
@@ -663,7 +661,7 @@ i {
     font-weight: 700;
     line-height: .56rem;
     text-align: center;
-    margin: 0 0.5rem 0 0;
+    margin: 0 0 0 0;
 }
 
 .lineup-item .lineup-info {
