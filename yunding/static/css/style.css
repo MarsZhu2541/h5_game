@@ -160,7 +160,7 @@ html {
 }
 
 .content-wrapper {
-    background-image: url("http://game.gtimg.cn/images/lol/tft/content-site/bg-top.png");
+    background: url(http://game.gtimg.cn/images/lol/tft/content-site/bg-top.png) rgb(27, 33, 40);
 }
 
 .content-wrapper .content {
@@ -174,8 +174,7 @@ html {
     padding: 40px;
 }
 
-.linup-list {
-    width: auto;
+.lineup-list {
     margin: 0 auto;
 }
 
@@ -212,7 +211,8 @@ html {
     text-overflow: ellipsis;
     line-height: 1.3rem;
     letter-spacing: .02rem;
-    margin-right: 1%;
+    width: 30%;
+    overflow: hidden;
 }
 
 .lineup-item .lineup-info .lineup-hex {
@@ -441,7 +441,7 @@ a {
 }
 
 .lineup-item .lineup-info .lineup-link:before {
-    background: rgba(255,255,255,.05);
+    background: rgba(255, 255, 255, .05);
     content: "";
     position: absolute;
     top: 50%;
@@ -509,7 +509,7 @@ a {
 }
 
 .page-champion .champion-list {
-    width: calc(100% + .3rem);
+    width: 1500px;
 }
 
 .page-champion .champion-item-big {
@@ -564,6 +564,7 @@ a {
     display: -webkit-flex;
     flex-direction: column;
     justify-content: flex-end;
+    text-align: left;
 }
 
 .page-champion .champion-item-big .champion-item-pic .race-job {
@@ -609,15 +610,16 @@ a {
     line-height: .52rem;
     font-size: .14rem;
     padding: 0 .18rem;
+    text-align: left    ;
 }
 
 .page-champion .champion-item-big .champion-item-info .name {
-    color: #b59758;
+    color: #fff;
 }
 
 .page-champion .champion-item-big .champion-item-info .price {
     float: right;
-    color: #b59758;
+    color: #9ff900;
 }
 
 .page-champion .champion-item-big .champion-item-info .price .icon-price {
@@ -627,11 +629,11 @@ a {
 }
 
 .icon-price {
-    background-position: -2.81rem -1.69rem;
-    width: .22rem;
-    height: .18rem;
-    background-image: url("https://game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?2023_11_15_15_36_57");
-    background-size: 3.99rem 3.49rem;
+    background-position: -1.59rem -2.05rem;
+    width: 0.22rem;
+    height: 0.18rem;
+    background-image: url("https://game.gtimg.cn/images/lol/tft/content-site/spr-default-theme.png?2023_11_15_15_36_57");
+    background-size: 4.84rem 2.72rem;
     background-repeat: no-repeat;
 }
 
@@ -661,14 +663,14 @@ i {
     font-weight: 700;
     line-height: .56rem;
     text-align: center;
-    margin: 0 0 0 0;
+    margin: 0 0.5rem 0 0;
 }
 
 .lineup-item .lineup-info {
     cursor: pointer;
 }
 
-.lineup-item .lineup-info .lineup-quality:before{
+.lineup-item .lineup-info .lineup-quality:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -679,9 +681,18 @@ i {
     /*background: rgba(48,63,110,.5);*/
 }
 
-.lineup-item .lineup-info .lineup-quality>span {
+.lineup-item .lineup-info .lineup-quality > span {
     background-position: -4.46rem -0.21rem;
     width: 0.62rem;
     height: 0.62rem;
+}
+
+
+@media (max-width: 500px) {
+    .content {
+        transform:scale(0.25);
+        transform-origin:top left;
+        width: max-content;
+    }
 }
 

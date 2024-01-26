@@ -1,4 +1,4 @@
-const App ={
+const App = {
     data() {
         return {
             cacheTime: 0,
@@ -9,8 +9,19 @@ const App ={
             chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
             hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
             equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
+            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
+            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
             bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s10/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
+            dialogVisible: false,
+            dialogContent: "",
+            chessMap: {},
+            hexMap: {},
+            equipMap: {},
+            jobMap: {},
+            raceMap: {},
+            sortedHeroes: [],
+            dialogTitle: "",
         }
     },
     mounted() {
@@ -44,7 +55,7 @@ const App ={
             let lineupList = this.lineupList
             let lineup_list = data["lineup_list"]
             lineup_list.sort(this.compareByQuality)
-            console.log(lineup_list)
+            // console.log(lineup_list)
             lineup_list.sort(this.compareBySortID)
             for (i in lineup_list) {
                 lineup = lineup_list[i]
@@ -57,7 +68,43 @@ const App ={
             }
             that.addCustomData()
         },
+        async getJobMap() {
+            rawData = {}
+            jobMap = {}
+            await axios.get(this.jobUrl)
+                .then(res => {
+                    rawData = res.data.data
+                })
+                .catch(err => {
+                    console.log('错误' + err)
+                })
+            for (i in rawData) {
+                jobMap[rawData[i].jobId] = rawData[i]
+            }
+            // console.log(hexMap)
+            return jobMap
+
+        },
+        async getRaceMap() {
+            rawData = {}
+            raceMap = {}
+            await axios.get(this.raceUrl)
+                .then(res => {
+                    rawData = res.data.data
+                })
+                .catch(err => {
+                    console.log('错误' + err)
+                })
+            for (i in rawData) {
+                // console.log(rawData[i])
+                raceMap[rawData[i].raceId] = rawData[i]
+            }
+            // console.log(hexMap)
+            return raceMap
+
+        },
         async getChessMap() {
+            preurl = "https://game.gtimg.cn/images/lol/tftstore/s10/624x318/"
             rawData = {}
             chessMap = {}
             await axios.get(this.chessUrl)
@@ -69,8 +116,11 @@ const App ={
                 })
             for (i in rawData) {
                 chess = rawData[i]
+                chess.picPath = preurl + chess.TFTID + ".jpg"
                 chessMap[chess['chessId']] = chess
             }
+            this.sortedHeroes = Object.values(chessMap).filter(c => c.price > 0).sort((a, b) => a.price - b.price)
+
             return chessMap
         },
         async getHexMap() {
@@ -78,14 +128,16 @@ const App ={
             hexMap = {}
             await axios.get(this.hexUrl)
                 .then(res => {
-                    rawData = res.data
+                    rawData = res.data.data
                 })
                 .catch(err => {
                     console.log('错误' + err)
                 })
             for (i in rawData) {
+                // console.log(rawData[i])
                 hexMap[rawData[i].hexId] = rawData[i]
             }
+            // console.log(hexMap)
             return hexMap
 
         },
@@ -107,9 +159,13 @@ const App ={
         },
         async addCustomData() {
             let lineupList = this.lineupList
-            let chessMap = await this.getChessMap()
-            let hexMap = await this.getHexMap()
-            let equipMap = await this.getEquipMap()
+
+            this.hexMap = await this.getHexMap()
+            this.equipMap = await this.getEquipMap()
+            this.jobMap = await this.getJobMap()
+            this.raceMap = await this.getRaceMap()
+            this.chessMap = await this.getChessMap()
+
             // console.log(equipMap)
 
 
@@ -177,21 +233,38 @@ const App ={
                 positions.sort(this.compareHeroByEquip)
                 //enhance hex data
                 hexIDList = lineup.hexbuff.recomm.split(",")
+                // console.log(hexIDList)
+                // console.log(hexMap) {id: '19744', hexId: '91002', type: '1', name: '纯天然 I', imgUrl: 'https://game.gtimg.cn/images/lol/act/img/tft/hex/20230612190353HEX6486fb99bca06.png', …}
                 lineup.hexbuff.recomm = []
                 for (i in hexIDList) {
                     hexID = hexIDList[i]
                     if (!(hexMap[hexID] == undefined)) {
                         lineup.hexbuff.recomm.push(hexMap[hexID])
                     }
-
                 }
             }
-            console.log(lineupList)
+
             localStorage.setItem("timeLoadLineuplist", new Date().valueOf().toString())
             localStorage.setItem("lineuplist", JSON.stringify(this.lineupList))
         },
-        showInfo(info) {
-            this.showMessage("success", info);
+        getJobAndRaces(jobIds, raceIds) {
+            jobIds = jobIds.split(",")
+            raceIds = raceIds.split(",")
+            jobAndRaces = []
+            for (i in raceIds) {
+                race = this.raceMap[raceIds[i]]
+                if (race) jobAndRaces.push({name: race.name, imagePath: race.imagePath, introduce: race.introduce})
+            }
+            for (i in jobIds) {
+                job = this.jobMap[jobIds[i]]
+                if (job) jobAndRaces.push({name: job.name, imagePath: job.imagePath, introduce: job.introduce})
+            }
+            return jobAndRaces
+        },
+        showInfo(title, info) {
+            this.dialogTitle = title
+            this.dialogContent = info
+            this.dialogVisible = true
         },
         compareByQuality(a, b) {
             if (a.quality == "" || a.quality == "0") {
@@ -274,6 +347,14 @@ const App ={
             this.setSidebarActive(id);
             this.sideBarTag = id
             this.pageTitle = title
+
+            this.$nextTick(() => {
+                if (id == "equipranking") {
+                    createEquipRanking()
+                }
+            })
+
+
         },
         showMessage(type, msg) {
             this.$message({
