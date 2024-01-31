@@ -374,7 +374,7 @@ const App = {
             this.$nextTick(() => {
                 if (id == "equipranking") {
                     that = this
-                    axios.get("http://localhost:3000/equipRanking")
+                    axios.get("http://124.221.128.48:8000/equipRanking")
                         .then(res => {
                             data = res.data
                             // data.name.map(function (item) {
@@ -391,7 +391,7 @@ const App = {
                             console.log('错误' + err)
                         })
                 } else if (id == "jobranking") {
-                    axios.get("http://localhost:3000/jobRanking")
+                    axios.get("http://124.221.128.48:8000/jobRanking")
                         .then(res => {
                             res.data.forEach(item => {
                                 job = {}
@@ -415,7 +415,7 @@ const App = {
                         })
 
                 } else if (id == "herocloud") {
-                    axios.get("http://localhost:3000/heroRanking")
+                    axios.get("http://124.221.128.48:8000/heroRanking")
                         .then(res => {
                             res.data.forEach(item => {
                                 item.name = chessMap[item.chessId].displayName
