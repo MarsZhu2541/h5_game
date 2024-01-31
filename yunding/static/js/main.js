@@ -8,7 +8,7 @@ const App = {
             lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984",
             chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
             hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
-            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.2stars-2024.S3/equip.js",
             jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
             raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
             bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s10/624x318/",
@@ -180,6 +180,14 @@ const App = {
             return equipMap
 
         },
+        showEquipMsg(equipId){
+            equip = this.equipMap[equipId]
+            try {
+                this.showInfo(equip.name+" 合成公式", equip.formula.split(",").map(id=> this.equipMap[id].name).join(" + "))
+            }catch (e){
+                this.showInfo(equip.name+" 合成公式", "这个装备合不了哟  ʅ(‾◡◝)ʃ ")
+            }
+        },
         async addCustomData() {
             let lineupList = this.lineupList
 
@@ -241,12 +249,16 @@ const App = {
                         position['hero_image'] = this.heroImageUrlPrefix + hero.name
                         position['price'] = hero.price
                         position['chessPriceClass'] = "component-champion cost" + hero.price + " champion-main"
-                        position['equip_image_list'] = []
+                        position['equip_list'] = []
                         position.equipment_id = position.equipment_id.split(',')
                         for (k in position.equipment_id) {
                             equipID = position.equipment_id[k]
                             if (!(equipMap[equipID] == undefined)) {
-                                position['equip_image_list'].push(equipMap[equipID].imagePath)
+                                equip = {}
+                                equipQuery =equipMap[equipID]
+                                equip.imagePath = equipQuery.imagePath
+                                equip.id = equipID
+                                position['equip_list'].push(equip)
                             }
 
                         }
@@ -325,19 +337,13 @@ const App = {
             return 0;
         },
         compareHeroByEquip(a, b) {
-            if (a.equip_image_list == undefined) {
-                a.equip_image_list = []
+            if (a.equip_list == undefined) {
+                a.equip_list = []
             }
-            if (b.equip_image_list == undefined) {
-                b.equip_image_list = []
+            if (b.equip_list == undefined) {
+                b.equip_list = []
             }
-            if (a.equip_image_list.length > b.equip_image_list.length) {
-                return -1
-            } else if (b.equip_image_list.length > a.equip_image_list.length) {
-                return 1
-            } else {
-                return 0;
-            }
+            return b.equip_list.length - a.equip_list.length
         },
         compareHeroByIs3Star(a, b) {
 
@@ -384,7 +390,7 @@ const App = {
                             data.name = data.name.slice(0, 10).map(name => that.englishNameIndexEquipMap[name])
                             data.appearance = data.appearance.slice(0, 10)
                             data.top_4 = data.top_4.slice(0, 10)
-                            console.log(data)
+                            // console.log(data)
                             createEquipRanking(data)
                         })
                         .catch(err => {

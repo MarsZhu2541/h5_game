@@ -462,9 +462,9 @@
                                                 <i class="icon-champion-star"></i>
                                             </div>
                                         </div>
-                                        <div class="equipment-list" v-if="chess.equip_image_list">
-                                            <div class="component-equipment" v-for="equipurl in chess.equip_image_list">
-                                                <img :src="equipurl">
+                                        <div class="equipment-list" v-if="chess.equip_list">
+                                            <div class="component-equipment" v-for="equip in chess.equip_list" @click.stop="showEquipMsg(equip.id)">
+                                                <img :src="equip.imagePath">
                                             </div>
                                         </div>
                                     </div>
@@ -595,7 +595,7 @@
                                 <span>描述</span>
                             </div>
                             <div class="synergy-list-body">
-                                <div class="synergy-item" v-for="equip in equipMap">
+                                <div class="synergy-item" v-for="equip in equipMap" @click="showEquipMsg(equip.equipId)">
                                     <div class="synergy">
                                         <div class="component-hex">
                                             <img :src="equip.imagePath">
