@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="static/plugins/css/AdminLTE.css">
     <link rel="stylesheet" href="static/plugins/css/all-skins.min.css">
     <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/otherstyle.css">
     <link rel="stylesheet" href="static/plugins/css/ion.rangeSlider.css">
     <link rel="stylesheet" href="static/plugins/css/ion.rangeSlider.skinNice.css">
     <link rel="stylesheet" href="static/plugins/css/slider.css">
@@ -365,7 +366,8 @@
                 </li>
 
                 <li id="jobranking">
-                    <a href="#" @click="changeContent('jobranking','羁绊排行')"><i class="fa fa-pie-chart"></i> <span>羁绊排行</span></a>
+                    <a href="#" @click="changeContent('jobranking','羁绊排行')"><i class="fa fa-pie-chart"></i>
+                        <span>羁绊排行</span></a>
                 </li>
 
                 <li id="herocloud">
@@ -546,14 +548,20 @@
                     <!--                    </div>-->
                 </div>
             </div>
-            <div v-if="sideBarTag=='jobranking'"></div>
-            <div v-if="sideBarTag=='herocloud'">假装有英雄词云</div>
-            <div id="equipline" v-if="sideBarTag=='equipranking'">假装有装备排行</div>
+            <div v-if="sideBarTag=='jobranking'" class="echats-wrapper">
+                <div id="pie" style="width: 800px;height: 500px;margin: 0 auto;"></div>
+            </div>
+            <div v-if="sideBarTag=='herocloud'" class="echats-wrapper">
+                <div id="cy" style="width: 800px;height: 500px;margin: 0 auto; "></div>
+            </div>
+            <div v-if="sideBarTag=='equipranking'" class="echats-wrapper">
+                <div id="equipline" style="width: 1200px;height: 600px;margin: 0 auto;"></div>
+            </div>
             <div v-if="sideBarTag=='hero'">
                 <div class="page-champion">
                     <div class="champion-list">
                         <div class="champion-item-big" v-for="hero in sortedHeroes"
-                             @click="showInfo(hero.displayName, hero.skillDetail)">
+                             @click="showInfo(hero.title + ' ' + hero.displayName, hero.skillDetail)">
                             <div class="champion-item-pic" :style="{'background-image': 'url('+hero.picPath+')'}">
                                 <div class="blur-img" :style="{'background-image': 'url('+hero.picPaths+')'}"></div>
                                 <div class="race-job-wrap">
@@ -561,7 +569,7 @@
                                             <span class="race-job-icon" @click.stop="showInfo(job.name, job.introduce)">
                                                 <img :src="job.imagePath" class="icon-img">
                                             </span>
-                                            <span class="race-job-name" @click.stop="showInfo(job.name, job.introduce)" >{{job.name}}</span>
+                                        <span class="race-job-name" @click.stop="showInfo(job.name, job.introduce)">{{job.name}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -578,9 +586,97 @@
 
 
             </div>
-            <div v-if="sideBarTag=='equip'">假装有装备大全</div>
-            <div v-if="sideBarTag=='hex'">假装有海克斯大全</div>
-            <div v-if="sideBarTag=='job'">假装有羁绊大全</div>
+            <div v-if="sideBarTag=='equip'" id="appMain" class="app-main">
+                <div class="app-page-content">
+                    <div class="page-thesea">
+                        <div class="synergy-list">
+                            <div class="synergy-list-head">
+                                <span>名称</span>
+                                <span>描述</span>
+                            </div>
+                            <div class="synergy-list-body">
+                                <div class="synergy-item" v-for="equip in equipMap">
+                                    <div class="synergy">
+                                        <div class="component-hex">
+                                            <img :src="equip.imagePath">
+                                        </div>
+                                        <span class="sea-name">{{equip.name}}</span>
+                                    </div>
+                                    <div class="synergy-txt">
+                                        <p class="txt-p">{{equip.effect}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="sideBarTag=='hex'" class="app-main">
+                <div class="app-page-content">
+                    <div class="page-thesea">
+                        <div class="synergy-list">
+                            <div class="synergy-list-head">
+                                <span>名称</span>
+                                <span>描述</span>
+                            </div>
+                            <div class="synergy-list-body">
+                                <div class="synergy-item" v-for="hex in hexMap">
+                                    <div class="synergy">
+                                        <div class="component-hex">
+                                            <div class="component-pic">
+                                                <img :src="hex.imgUrl">
+                                            </div> <!---->
+                                        </div>
+                                        <span class="sea-name">{{hex.name}}</span>
+                                    </div>
+                                    <div class="synergy-txt">
+                                        <p class="txt-p">{{hex.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-page-content" v-if="sideBarTag=='job'">
+                <div class="page-synergy">
+                    <div class="synergy-list">
+                        <div class="synergy-list-head">
+                            <span>特质</span><span>羁绊</span><span>协同英雄</span>
+                        </div>
+                        <div class="synergy-list-body" v-for="map in [jobMap,raceMap]">
+                            <div class="synergy-item" v-for="job in map">
+                                <div class="synergy">
+                                    <span class="synergy-icon">
+                                        <img :src="'https://game.gtimg.cn/images/lol/act/img/tft/origins/'+job.alias">
+                                    </span>
+                                    {{ job.name }}
+                                </div>
+                                <div class="synergy-txt">
+                                    <p class="txt-p">
+                                        {{ job.introduce }}
+                                    </p>
+                                    <p class="txt-p2" v-for="(value,key,i) in job.level"><span
+                                            :class="'txt-level level-'+i">{{ key }}</span>
+                                        {{ value }}
+                                    </p>
+                                </div>
+                                <div class="synergy-champion-list">
+                                    <div :class="'component-champion cost'+hero.price"
+                                         v-for="hero in getHeroesByJobId(job.jobId?job.jobId:job.raceId)">
+                                        <div draggable="false" class="champion-pic" @click="showHeroMsg(hero.id)">
+                                            <img :src="hero.picUrl" draggable="false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- /.content -->
     </div>
@@ -648,6 +744,8 @@
 <script src="static/plugins/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="static/plugins/js/axios.min.js"></script>
 <script src="static/plugins/js/echarts.js"></script>
+<script src="static/plugins/js/echart3.js"></script>
+<script src="static/plugins/js/echarts-wordcloud.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -675,8 +773,7 @@
 
 </script>
 <script src="static/js/main.js"></script>
-<script src="static/js/api.js"></script>
-<script src="static/js/equipline.js"></script>
+<script src="static/js/createEcharts.js"></script>
 </body>
 
 </html>

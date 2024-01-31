@@ -622,6 +622,13 @@ a {
     color: #9ff900;
 }
 
+.sea-name{
+    color: #9ff900;
+}
+.txt-p{
+    color: #fff;
+}
+
 .page-champion .champion-item-big .champion-item-info .price .icon-price {
     display: inline-block;
     vertical-align: middle;

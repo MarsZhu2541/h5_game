@@ -16,6 +16,8 @@ const App = {
             dialogVisible: false,
             dialogContent: "",
             chessMap: {},
+            englishNameIndexEquipMap: {},
+            jobIndexForChessMap: {},
             hexMap: {},
             equipMap: {},
             jobMap: {},
@@ -81,7 +83,7 @@ const App = {
             for (i in rawData) {
                 jobMap[rawData[i].jobId] = rawData[i]
             }
-            // console.log(hexMap)
+            // console.log(jobMap)
             return jobMap
 
         },
@@ -99,7 +101,7 @@ const App = {
                 // console.log(rawData[i])
                 raceMap[rawData[i].raceId] = rawData[i]
             }
-            // console.log(hexMap)
+            // console.log(raceMap)
             return raceMap
 
         },
@@ -118,9 +120,27 @@ const App = {
                 chess = rawData[i]
                 chess.picPath = preurl + chess.TFTID + ".jpg"
                 chessMap[chess['chessId']] = chess
+
+                jobIds = chess.jobIds.split(',')
+                raceIds = chess.raceIds.split(',')
+                for (i in jobIds) {
+                    hero = {}
+                    hero.picUrl = this.heroImageUrlPrefix + chess.name
+                    hero.id = chess.chessId
+                    hero.price = chess.price
+                    if (!this.jobIndexForChessMap[jobIds[i]]) this.jobIndexForChessMap[jobIds[i]] = []
+                    this.jobIndexForChessMap[jobIds[i]].push(hero)
+                }
+                for (i in raceIds) {
+                    hero = {}
+                    hero.picUrl = this.heroImageUrlPrefix + chess.name
+                    hero.id = chess.chessId
+                    hero.price = chess.price
+                    if (!this.jobIndexForChessMap[raceIds[i]]) this.jobIndexForChessMap[raceIds[i]] = []
+                    this.jobIndexForChessMap[raceIds[i]].push(hero)
+                }
             }
             this.sortedHeroes = Object.values(chessMap).filter(c => c.price > 0).sort((a, b) => a.price - b.price)
-
             return chessMap
         },
         async getHexMap() {
@@ -144,6 +164,7 @@ const App = {
         async getEquipMap() {
             rawData = {}
             equipMap = {}
+            that = this
             await axios.get(this.equipUrl)
                 .then(res => {
                     rawData = res.data.data
@@ -153,7 +174,9 @@ const App = {
                 })
             for (i in rawData) {
                 equipMap[rawData[i].equipId] = rawData[i]
+                that.englishNameIndexEquipMap[rawData[i].englishName] = rawData[i].name
             }
+            // console.log(equipMap)
             return equipMap
 
         },
@@ -350,17 +373,76 @@ const App = {
 
             this.$nextTick(() => {
                 if (id == "equipranking") {
-                    createEquipRanking()
+                    that = this
+                    axios.get("http://localhost:3000/equipRanking")
+                        .then(res => {
+                            data = res.data
+                            // data.name.map(function (item) {
+                            //     return that.englishNameIndexEquipMap[item];
+                            // })
+                            newNames = []
+                            data.name = data.name.slice(0, 10).map(name => that.englishNameIndexEquipMap[name])
+                            data.appearance = data.appearance.slice(0, 10)
+                            data.top_4 = data.top_4.slice(0, 10)
+                            console.log(data)
+                            createEquipRanking(data)
+                        })
+                        .catch(err => {
+                            console.log('错误' + err)
+                        })
+                } else if (id == "jobranking") {
+                    axios.get("http://localhost:3000/jobRanking")
+                        .then(res => {
+                            res.data.forEach(item => {
+                                job = {}
+                                jobList = []
+                                item.feature.split(";").forEach(feature => {
+                                    fAndn = feature.split(",")
+                                    jobId = fAndn[0]
+                                    jobQuery = jobMap[jobId] ? jobMap[jobId] : raceMap[jobId]
+                                    job.name = jobQuery.name
+                                    job.imagePath = jobQuery.imagePath
+                                    job.num = fAndn[1]
+                                    jobList.push(job)
+                                })
+                                item.feature = jobList
+                            })
+                            // console.log(res.data)
+                            createJobRanking(res.data)
+                        })
+                        .catch(err => {
+                            console.log('错误' + err)
+                        })
+
+                } else if (id == "herocloud") {
+                    axios.get("http://localhost:3000/heroRanking")
+                        .then(res => {
+                            res.data.forEach(item => {
+                                item.name = chessMap[item.chessId].displayName
+                            })
+                            // console.log(res.data)
+                            createHeroRanking(res.data)
+                        })
+                        .catch(err => {
+                            console.log('错误' + err)
+                        })
                 }
             })
 
-
+        },
+        getHeroesByJobId(jobId) {
+            return this.jobIndexForChessMap[jobId].sort((a, b) => a.price - b.price)
         },
         showMessage(type, msg) {
             this.$message({
                 message: msg, type: type,
             })
         },
+        showHeroMsg(heroId) {
+            hero = this.chessMap[heroId]
+            this.showInfo(hero.title + ' ' + hero.displayName, hero.skillDetail)
+        }
+
     }
 }
 
