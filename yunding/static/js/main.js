@@ -5,13 +5,13 @@ const App = {
             pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984",
-            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
-            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
-            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.2stars-2024.S3/equip.js",
-            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
-            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
-            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s10/624x318/",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s11/6/lineup_detail_total.json?v=9505702",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/chess.js",
+            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/hex.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/equip.js",
+            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/job.js",
+            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/race.js",
+            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
             dialogVisible: false,
             dialogContent: "",
@@ -188,17 +188,26 @@ const App = {
                 this.showInfo(equip.name+" 合成公式", "这个装备合不了哟  ʅ(‾◡◝)ʃ ")
             }
         },
+        async fetchData() {
+            const [hexMap, equipMap, jobMap, raceMap, chessMap] = await Promise.all([
+                this.getHexMap(),
+                this.getEquipMap(),
+                this.getJobMap(),
+                this.getRaceMap(),
+                this.getChessMap()
+            ]);
+
+            this.hexMap = hexMap;
+            this.equipMap = equipMap;
+            this.jobMap = jobMap;
+            this.raceMap = raceMap;
+            this.chessMap = chessMap;
+        },
         async addCustomData() {
             let lineupList = this.lineupList
-
-            this.hexMap = await this.getHexMap()
-            this.equipMap = await this.getEquipMap()
-            this.jobMap = await this.getJobMap()
-            this.raceMap = await this.getRaceMap()
-            this.chessMap = await this.getChessMap()
+            await this.fetchData();
 
             // console.log(equipMap)
-
 
             for (i in lineupList) {
                 lineup = lineupList[i]
@@ -380,7 +389,7 @@ const App = {
             this.$nextTick(() => {
                 if (id == "equipranking") {
                     that = this
-                    axios.get("http://124.221.128.48:8000/equipRanking")
+                    axios.get("http://139.196.93.191:8000/equipRanking")
                         .then(res => {
                             data = res.data
                             // data.name.map(function (item) {
@@ -397,7 +406,7 @@ const App = {
                             console.log('错误' + err)
                         })
                 } else if (id == "jobranking") {
-                    axios.get("http://124.221.128.48:8000/jobRanking")
+                    axios.get("http://139.196.93.191:8000/jobRanking")
                         .then(res => {
                             res.data.forEach(item => {
                                 job = {}
@@ -421,7 +430,7 @@ const App = {
                         })
 
                 } else if (id == "herocloud") {
-                    axios.get("http://124.221.128.48:8000/heroRanking")
+                    axios.get("http://139.196.93.191:8000/heroRanking")
                         .then(res => {
                             res.data.forEach(item => {
                                 item.name = chessMap[item.chessId].displayName
