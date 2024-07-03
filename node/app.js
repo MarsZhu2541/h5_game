@@ -63,7 +63,7 @@ app.get('/heroRanking', function (req, res) {
             dataDict['value'] = splitData[3]
             dataList.push(dataDict)
         })
-        console.log(dataList);
+        // console.log(dataList);
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.send(dataList);
     })
