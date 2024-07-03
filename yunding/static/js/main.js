@@ -11,6 +11,7 @@ const App = {
             equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.12-2024.S11-2/equip-2.js",
             jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
             raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
+            adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/adventure.js",
             bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
             heroMapImageUrlPrefix : "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
@@ -23,6 +24,7 @@ const App = {
             equipMap: {},
             jobMap: {},
             raceMap: {},
+            adventureMap: {},
             sortedHeroes: [],
             dialogTitle: "",
         }
@@ -104,6 +106,24 @@ const App = {
             }
             // console.log(raceMap)
             return raceMap
+
+        },
+        async getAdventureMap() {
+            rawData = {}
+            adventureMap = {}
+            await axios.get(this.adventureUrl)
+                .then(res => {
+                    rawData = res.data.data
+                })
+                .catch(err => {
+                    console.log('错误' + err)
+                })
+            for (i in rawData) {
+                // console.log(rawData[i])
+                adventureMap[rawData[i].id] = rawData[i]
+            }
+            // console.log(raceMap)
+            return adventureMap
 
         },
         async getChessMap() {
@@ -189,12 +209,13 @@ const App = {
             }
         },
         async fetchData() {
-            const [hexMap, equipMap, jobMap, raceMap, chessMap] = await Promise.all([
+            const [hexMap, equipMap, jobMap, raceMap, chessMap, adventureMap] = await Promise.all([
                 this.getHexMap(),
                 this.getEquipMap(),
                 this.getJobMap(),
                 this.getRaceMap(),
-                this.getChessMap()
+                this.getChessMap(),
+                this.getAdventureMap()
             ]);
 
             this.hexMap = hexMap;
@@ -202,6 +223,7 @@ const App = {
             this.jobMap = jobMap;
             this.raceMap = raceMap;
             this.chessMap = chessMap;
+            this.adventureMap = adventureMap;
         },
         async addCustomData() {
             let lineupList = this.lineupList

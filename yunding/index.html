@@ -399,6 +399,11 @@
                     <a href="#" @click="changeContent('job','羁绊大全')"><i class="fa fa-chain"></i>
                         <span>羁绊大全</span></a>
                 </li>
+
+                <li id="adventure">
+                    <a href="#" @click="changeContent('adventure','奇遇大全')"><i class="fa fa-magic"></i>
+                        <span>奇遇大全</span></a>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -463,7 +468,8 @@
                                             </div>
                                         </div>
                                         <div class="equipment-list" v-if="chess.equip_list">
-                                            <div class="component-equipment" v-for="equip in chess.equip_list" @click.stop="showEquipMsg(equip.id)">
+                                            <div class="component-equipment" v-for="equip in chess.equip_list"
+                                                 @click.stop="showEquipMsg(equip.id)">
                                                 <img :src="equip.imagePath">
                                             </div>
                                         </div>
@@ -595,7 +601,8 @@
                                 <span>描述</span>
                             </div>
                             <div class="synergy-list-body">
-                                <div class="synergy-item" v-for="equip in equipMap" @click="showEquipMsg(equip.equipId)">
+                                <div class="synergy-item" v-for="equip in equipMap"
+                                     @click="showEquipMsg(equip.equipId)">
                                     <div class="synergy">
                                         <div class="component-hex">
                                             <img :src="equip.imagePath">
@@ -671,6 +678,30 @@
                                             <img :src="hero.picUrl" draggable="false">
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-page-content" v-if="sideBarTag=='adventure'">
+                <div class="page-hex-buff">
+                    <div class="synergy-list">
+                        <!-- 奇遇 S-->
+                        <div class="synergy-list-head adventure-list">
+                            <span>名称</span>
+                            <span>描述</span>
+                        </div>
+                        <div class="synergy-list-body">
+                            <div class="synergy-item" v-for="adve in adventureMap"
+                                 :key="'adventure_' + adve.id">
+                                <div class="synergy">
+                                    <div class="adventure"><img :src="adve.logoUrl"></div>
+                                    <span class="hex-name">{{ adve.title }}</span>
+                                </div>
+                                <div class="synergy-txt">
+                                    <p class="txt-p">{{ adve.desc }}</p>
                                 </div>
                             </div>
                         </div>
