@@ -5,14 +5,15 @@ const App = {
             pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s11/6/lineup_detail_total.json?v=9505702",
-            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/chess.js",
-            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/hex.js",
-            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/equip.js",
-            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/job.js",
-            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.6-2024.S11/race.js",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s11/6/lineup_detail_total.json?v=9555531",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
+            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.12-2024.S11-2/equip-2.js",
+            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
+            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
             bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
+            heroMapImageUrlPrefix : "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
             dialogVisible: false,
             dialogContent: "",
             chessMap: {},
@@ -83,7 +84,7 @@ const App = {
             for (i in rawData) {
                 jobMap[rawData[i].jobId] = rawData[i]
             }
-            // console.log(jobMap)
+            console.log(jobMap)
             return jobMap
 
         },
@@ -106,7 +107,6 @@ const App = {
 
         },
         async getChessMap() {
-            preurl = "https://game.gtimg.cn/images/lol/tftstore/s10/624x318/"
             rawData = {}
             chessMap = {}
             await axios.get(this.chessUrl)
@@ -118,7 +118,7 @@ const App = {
                 })
             for (i in rawData) {
                 chess = rawData[i]
-                chess.picPath = preurl + chess.TFTID + ".jpg"
+                chess.picPath = this.heroMapImageUrlPrefix + chess.TFTID + ".jpg"
                 chessMap[chess['chessId']] = chess
 
                 jobIds = chess.jobIds.split(',')
@@ -446,7 +446,12 @@ const App = {
 
         },
         getHeroesByJobId(jobId) {
-            return this.jobIndexForChessMap[jobId].sort((a, b) => a.price - b.price)
+            try {
+                return this.jobIndexForChessMap[jobId].sort((a, b) => a.price - b.price)
+            }catch (e){
+                console.log("getHeroesByJobId error:" + this.jobIndexForChessMap[jobId])
+            }
+
         },
         showMessage(type, msg) {
             this.$message({
