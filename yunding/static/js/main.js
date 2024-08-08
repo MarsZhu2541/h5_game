@@ -5,16 +5,16 @@ const App = {
             pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s11/6/lineup_detail_total.json?v=9555531",
-            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
-            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
-            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.12-2024.S11-2/equip-2.js",
-            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
-            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
-            adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/adventure.js",
-            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s12/6/lineup_detail_total.json?v=9572685",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/chess.js",
+            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/hex.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/equip.js",
+            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/job.js",
+            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/race.js",
+            adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/adventure.js",
+            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
-            heroMapImageUrlPrefix : "https://game.gtimg.cn/images/lol/tftstore/s11/624x318/",
+            heroMapImageUrlPrefix : "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
             dialogVisible: false,
             dialogContent: "",
             chessMap: {},
@@ -24,7 +24,7 @@ const App = {
             equipMap: {},
             jobMap: {},
             raceMap: {},
-            adventureMap: {},
+            adventureList: [],
             sortedHeroes: [],
             dialogTitle: "",
         }
@@ -86,7 +86,7 @@ const App = {
             for (i in rawData) {
                 jobMap[rawData[i].jobId] = rawData[i]
             }
-            console.log(jobMap)
+            // console.log(jobMap)
             return jobMap
 
         },
@@ -108,9 +108,9 @@ const App = {
             return raceMap
 
         },
-        async getAdventureMap() {
+        async getAdventureList() {
             rawData = {}
-            adventureMap = {}
+            list = []
             await axios.get(this.adventureUrl)
                 .then(res => {
                     rawData = res.data.data
@@ -119,11 +119,11 @@ const App = {
                     console.log('错误' + err)
                 })
             for (i in rawData) {
-                // console.log(rawData[i])
-                adventureMap[rawData[i].id] = rawData[i]
+                console.log(rawData[i])
+                list.push(rawData[i])
             }
             // console.log(raceMap)
-            return adventureMap
+            return list.sort(this.compareByPrice)
 
         },
         async getChessMap() {
@@ -209,13 +209,13 @@ const App = {
             }
         },
         async fetchData() {
-            const [hexMap, equipMap, jobMap, raceMap, chessMap, adventureMap] = await Promise.all([
+            const [hexMap, equipMap, jobMap, raceMap, chessMap, adventureList] = await Promise.all([
                 this.getHexMap(),
                 this.getEquipMap(),
                 this.getJobMap(),
                 this.getRaceMap(),
                 this.getChessMap(),
-                this.getAdventureMap()
+                this.getAdventureList()
             ]);
 
             this.hexMap = hexMap;
@@ -223,7 +223,8 @@ const App = {
             this.jobMap = jobMap;
             this.raceMap = raceMap;
             this.chessMap = chessMap;
-            this.adventureMap = adventureMap;
+            this.adventureList = adventureList;
+
         },
         async addCustomData() {
             let lineupList = this.lineupList
@@ -352,11 +353,11 @@ const App = {
         compareBySortID(a, b) {
             aID = a.sortID
             bID = b.sortID
-            if (aID == aID && aID == 0) {
+            if (aID == bID && aID == 0) {
                 return 0
             } else if (aID == 0) {
                 return 1;
-            } else if (aID == 0) {
+            } else if (bID == 0) {
                 return -1;
             }
 
@@ -366,6 +367,18 @@ const App = {
                 return -1;
             }
             return 0;
+        },
+        compareByPrice(a, b) {
+            aPrice = a.price
+            bPrice = b.price
+            if (aPrice == bPrice && aPrice == "") {
+                return -1
+            } else if (aPrice == "") {
+                return -1;
+            } else if (bPrice == "") {
+                return 1;
+            }
+            return aPrice - bPrice;
         },
         compareHeroByEquip(a, b) {
             if (a.equip_list == undefined) {

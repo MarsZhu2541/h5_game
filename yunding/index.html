@@ -401,8 +401,8 @@
                 </li>
 
                 <li id="adventure">
-                    <a href="#" @click="changeContent('adventure','奇遇大全')"><i class="fa fa-magic"></i>
-                        <span>奇遇大全</span></a>
+                    <a href="#" @click="changeContent('adventure','强化大全')"><i class="fa fa-magic"></i>
+                        <span>强化大全</span></a>
                 </li>
             </ul>
         </section>
@@ -688,16 +688,19 @@
             <div class="app-page-content" v-if="sideBarTag=='adventure'">
                 <div class="page-hex-buff">
                     <div class="synergy-list">
-                        <!-- 奇遇 S-->
+                        <!-- 强化 S-->
                         <div class="synergy-list-head adventure-list">
                             <span>名称</span>
                             <span>描述</span>
                         </div>
                         <div class="synergy-list-body">
-                            <div class="synergy-item" v-for="adve in adventureMap"
+                            <div class="synergy-item" v-for="adve in adventureList"
                                  :key="'adventure_' + adve.id">
                                 <div class="synergy">
-                                    <div class="adventure"><img :src="adve.logoUrl"></div>
+                                    <div class="component-wand">
+                                        <div class="wand-pic" draggable="false"><img :src="adve.logoUrl"></div>
+                                        <div class="wand-num">{{ adve.price}}</div>
+                                    </div>
                                     <span class="hex-name">{{ adve.title }}</span>
                                 </div>
                                 <div class="synergy-txt">
