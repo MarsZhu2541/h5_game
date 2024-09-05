@@ -14,7 +14,8 @@ const App = {
             adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/adventure.js",
             bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
-            heroMapImageUrlPrefix : "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
+            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
+            nodeJsURL: "https://139.196.93.191:8000/",
             dialogVisible: false,
             dialogContent: "",
             chessMap: {},
@@ -119,7 +120,7 @@ const App = {
                     console.log('错误' + err)
                 })
             for (i in rawData) {
-                console.log(rawData[i])
+                // console.log(rawData[i])
                 list.push(rawData[i])
             }
             // console.log(raceMap)
@@ -200,12 +201,12 @@ const App = {
             return equipMap
 
         },
-        showEquipMsg(equipId){
+        showEquipMsg(equipId) {
             equip = this.equipMap[equipId]
             try {
-                this.showInfo(equip.name+" 合成公式", equip.formula.split(",").map(id=> this.equipMap[id].name).join(" + "))
-            }catch (e){
-                this.showInfo(equip.name+" 合成公式", "这个装备合不了哟  ʅ(‾◡◝)ʃ ")
+                this.showInfo(equip.name + " 合成公式", equip.formula.split(",").map(id => this.equipMap[id].name).join(" + "))
+            } catch (e) {
+                this.showInfo(equip.name + " 合成公式", "这个装备合不了哟  ʅ(‾◡◝)ʃ ")
             }
         },
         async fetchData() {
@@ -287,7 +288,7 @@ const App = {
                             equipID = position.equipment_id[k]
                             if (!(equipMap[equipID] == undefined)) {
                                 equip = {}
-                                equipQuery =equipMap[equipID]
+                                equipQuery = equipMap[equipID]
                                 equip.imagePath = equipQuery.imagePath
                                 equip.id = equipID
                                 position['equip_list'].push(equip)
@@ -420,11 +421,10 @@ const App = {
             this.setSidebarActive(id);
             this.sideBarTag = id
             this.pageTitle = title
-
+            that = this
             this.$nextTick(() => {
                 if (id == "equipranking") {
-                    that = this
-                    axios.get("http://139.196.93.191:8000/equipRanking")
+                    axios.get(that.nodeJsURL + "equipRanking")
                         .then(res => {
                             data = res.data
                             // data.name.map(function (item) {
@@ -441,7 +441,7 @@ const App = {
                             console.log('错误' + err)
                         })
                 } else if (id == "jobranking") {
-                    axios.get("http://139.196.93.191:8000/jobRanking")
+                    axios.get(that.nodeJsURL + "jobRanking")
                         .then(res => {
                             res.data.forEach(item => {
                                 job = {}
@@ -465,7 +465,7 @@ const App = {
                         })
 
                 } else if (id == "herocloud") {
-                    axios.get("http://139.196.93.191:8000/heroRanking")
+                    axios.get(that.nodeJsURL + "heroRanking")
                         .then(res => {
                             res.data.forEach(item => {
                                 item.name = chessMap[item.chessId].displayName
@@ -483,7 +483,7 @@ const App = {
         getHeroesByJobId(jobId) {
             try {
                 return this.jobIndexForChessMap[jobId].sort((a, b) => a.price - b.price)
-            }catch (e){
+            } catch (e) {
                 console.log("getHeroesByJobId error:" + this.jobIndexForChessMap[jobId])
             }
 

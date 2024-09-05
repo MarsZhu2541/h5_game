@@ -1,7 +1,12 @@
 var express = require('express');
 const axios = require('axios');
+const https = require('https');
 var PORT = 3000;
 var app = express();
+const path = require('path');
+const fs = require('fs');
+
+
 
 JobRankingUrl = "https://lol.sw.game.qq.com/lol/lwdcommact/a20200629api/A20200629api/mbrank?" +
     "time_type=1&tier_part=255&raceid=255&jobid=255&callback=TFTBigDataMainEffectRank"
@@ -110,5 +115,12 @@ app.get('/equipRanking', function (req, res) {
         })
 })
 
-app.listen(PORT);
+const options = {
+    key: fs.readFileSync(path.join(__dirname, '503666666.cn.key')), // 私钥文件
+    cert: fs.readFileSync(path.join(__dirname, '503666666.cn.pem')) // 证书文件
+};
+const server = https.createServer(options, app);
+
+
+server.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
