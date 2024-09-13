@@ -238,24 +238,26 @@ const App = {
                 //enhance lineup info
 
                 orderStr = lineup.equipment_order
-                orderArr = lineup.equipment_order.split(',')
-                while (orderStr[orderStr.length - 1] == ',') {
-                    orderStr = orderStr.substr(0, orderStr.length - 1)
-                    orderArr.pop()
+                if(orderStr){
+                    orderArr = lineup.equipment_order.split(',')
+                    while (orderStr[orderStr.length - 1] == ',') {
+                        orderStr = orderStr.substr(0, orderStr.length - 1)
+                        orderArr.pop()
+                    }
+                    for (h in orderArr) {
+                        orderStr = orderStr.replace(orderArr[h], equipMap[parseInt(orderArr[h])].name)
+                    }
+                    orderStr = orderStr.replaceAll(',', '>')
                 }
-                for (h in orderArr) {
-                    orderStr = orderStr.replace(orderArr[h], equipMap[parseInt(orderArr[h])].name)
-                }
-                orderStr = orderStr.replaceAll(',', '>')
 
-                lineup.info = "阵容强度： " + lineup.quality + "\n"
-                    + "D牌节奏： " + lineup.d_time + "\n"
-                    + "早期玩法： " + lineup.early_info + "\n"
-                    + "抢装顺序： " + orderStr + "\n\n"
-                    + "克制阵容： " + lineup.enemy_info + "\n\n"
-                    + "装备推荐： " + lineup.equipment_info + "\n\n"
-                    + "海克斯推荐： " + lineup.hex_info + "\n"
-                    + "站位推荐： " + lineup.location_info + "\n";
+                lineup.info = "阵容强度： " + lineup.quality
+                    + "D牌节奏： " + lineup.d_time
+                    + "早期玩法： " + lineup.early_info
+                    + "抢装顺序： " + orderStr
+                    + "克制阵容： " + lineup.enemy_info
+                    + "装备推荐： " + lineup.equipment_info
+                    + "海克斯推荐： " + lineup.hex_info
+                    + "站位推荐： " + lineup.location_info;
 
                 //enhance hero data
                 level_3_heros = lineup['level_3_heros']
