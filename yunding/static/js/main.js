@@ -5,16 +5,16 @@ const App = {
             pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s12/6/lineup_detail_total.json?v=9572685",
-            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/chess.js",
-            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/hex.js",
-            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/equip.js",
-            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/job.js",
-            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/race.js",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s13/6/lineup_detail_total.json?v=9625094",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
+            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
+            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
+            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
             adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/adventure.js",
-            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
-            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s12/624x318/",
+            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s13/624x318/",
+            goopUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/goop.js",
             nodeJsURL: "https://139.196.93.191:8000/",
             dialogVisible: false,
             dialogContent: "",
@@ -26,6 +26,7 @@ const App = {
             jobMap: {},
             raceMap: {},
             adventureList: [],
+            goopList: [],
             sortedHeroes: [],
             dialogTitle: "",
         }
@@ -107,6 +108,27 @@ const App = {
             }
             // console.log(raceMap)
             return raceMap
+
+        },
+        async getGoopList() {
+            rawData = {}
+            goopList = []
+            await axios.get(this.goopUrl)
+                .then(res => {
+                    rawData = res.data.data
+                })
+                .catch(err => {
+                    console.log('错误' + err)
+                })
+            for (i in rawData) {
+                // console.log(rawData[i])
+                goopList.push({
+                    title: rawData[i].title,
+                    desc: rawData[i].desc
+                })
+            }
+            // console.log(goopList)
+            return goopList
 
         },
         async getAdventureList() {
@@ -210,13 +232,14 @@ const App = {
             }
         },
         async fetchData() {
-            const [hexMap, equipMap, jobMap, raceMap, chessMap, adventureList] = await Promise.all([
+            const [hexMap, equipMap, jobMap, raceMap, chessMap, adventureList, goopList] = await Promise.all([
                 this.getHexMap(),
                 this.getEquipMap(),
                 this.getJobMap(),
                 this.getRaceMap(),
                 this.getChessMap(),
-                this.getAdventureList()
+                this.getAdventureList(),
+                this.getGoopList()
             ]);
 
             this.hexMap = hexMap;
@@ -225,6 +248,7 @@ const App = {
             this.raceMap = raceMap;
             this.chessMap = chessMap;
             this.adventureList = adventureList;
+            this.goopList = goopList;
 
         },
         async addCustomData() {
@@ -276,7 +300,7 @@ const App = {
 
                         position['price'] = hero.price
                         if (!position['is_carry_hero'] == "") {
-                            lineup['bgImagePath'] = this.bgImageUrlPrefix + hero.name.toString().replace('png', 'jpg')
+                            lineup['bgImagePath'] = this.heroMapImageUrlPrefix + hero.name.toString().replace('png', 'jpg')
                         }
                         position['name'] = hero.title + " " + hero.displayName
                         position['skillDetail'] = hero.skillDetail
