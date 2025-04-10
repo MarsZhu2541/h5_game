@@ -91,7 +91,7 @@ function createHeroRanking(result) {
             data: result
         }]
     };
-    var myChart = echarts3.init(document.getElementById('cy'));
+    var myChart = echarts.init(document.getElementById('cy'));
     myChart.setOption(option);
 
 }

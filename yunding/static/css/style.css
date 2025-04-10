@@ -405,12 +405,12 @@ img {
 }
 
 .icon-champion-star {
-    background-position: .02rem -3.24rem;
+    background-position: -3.21rem -1.07rem;
     width: .29rem;
     height: .28rem;
-    background-image: url(//game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?2024_11_18_11_45_39);
-    background-size: 3.72rem 3.46rem;
-    background-repeat: no-repeat;
+    background-image: url(//game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?2025_3_27_15_27_57);
+    background-size: 3.7rem 3.38rem;
+    background-repeat: no-repeat
 }
 
 .component-champion .champion-stars.star-3 > i:nth-of-type(1) {
