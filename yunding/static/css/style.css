@@ -160,8 +160,11 @@ html {
 }
 
 .content-wrapper {
-    background: url(http://game.gtimg.cn/images/lol/tft/content-site/bg-top.png) rgb(27, 33, 40);
+    background: #151319 url(//game.gtimg.cn/images/lol/tft/content-site/bg-top-4.png) no-repeat center top;
+    background-size: 100%;
 }
+
+
 
 .content-wrapper .content {
     margin: 0 auto;
@@ -751,12 +754,1826 @@ i {
     height: .52rem;
 }
 
+.simulator-container {
+    position: relative;
+    margin-top: .45rem
+}
+
+.top-part {
+    display: flex;
+    font-size: 0;
+    white-space: nowrap;
+    padding-left: 22.2%
+}
+
+.top-part .lineup-base-info {
+    height: .34rem;
+    display: inline-block;
+    position: relative
+}
+
+.top-part .lineup-base-info .input-placeholder {
+    display: block;
+    position: absolute;
+    top: .01rem;
+    left: 1.2rem;
+    height: .32rem;
+    line-height: .32rem;
+    color: rgba(162,175,204,.5);
+    font-size: .14rem;
+    pointer-events: none
+}
+
+.top-part .lineup-base-info .i-title {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -.09rem;
+    width: 1.06rem;
+    height: .18rem;
+    border-right: 1px solid #2e3449;
+    box-sizing: border-box;
+    font-size: .14rem;
+    color: #f1f2f8;
+    line-height: .18rem;
+    text-align: center
+}
+
+.top-part .lineup-base-info .input-name {
+    display: block;
+    position: relative;
+    width: 3.2rem;
+    height: .34rem;
+    line-height: .32rem;
+    font-size: .14rem;
+    background: 0 0;
+    color: #f1f2f8;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: .03rem;
+    padding-left: 1.16rem;
+    padding-right: .2rem;
+    box-sizing: border-box;
+    -webkit-transition: border-color .3s;
+    -moz-transition: border-color .3s;
+    -o-transition: border-color .3s;
+    transition: border-color .3s
+}
+
+.top-part .lineup-base-info .input-name:-ms-input-placeholder,.top-part .lineup-base-info .input-name::-moz-placeholder,.top-part .lineup-base-info .input-name::-webkit-input-placeholder,.top-part .lineup-base-info .input-name::input-placeholder {
+    color: #4e5672
+}
+
+.top-part .lineup-base-info .input-name:focus,.top-part .lineup-base-info .input-name:hover {
+    border-color: #c174e8
+}
+
+.top-part .lineup-base-info .lineup-type-select {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .2rem;
+    width: 1.44rem
+}
+
+.top-part .lineup-base-info .lineup-type-select .select-text {
+    height: .4rem;
+    line-height: .38rem
+}
+
+.top-part .lineup-base-info .lineup-type-select .select-options-wrap {
+    top: .39rem
+}
+
+.top-part .lineup-video-info .i-title {
+    width: .96rem
+}
+
+.top-part .lineup-video-info .video-tips {
+    position: absolute;
+    top: -.3rem;
+    left: 0
+}
+
+.top-part .lineup-video-info .video-tips>i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .04rem
+}
+
+.top-part .lineup-video-info .video-tips>span {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fe3e3e;
+    font-size: .14rem
+}
+
+.top-part .component-select {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.3rem;
+    height: .34rem;
+    margin: 0 .2rem
+}
+
+.top-part .component-select .select-text {
+    color: rgba(162,175,204,.5);
+    border: 1px solid rgba(255,255,255,.2);
+    height: 100%;
+    line-height: .32rem;
+    border-radius: .03rem;
+    background: 0 0
+}
+
+.top-part .component-select .select-options-wrap {
+    top: .33rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: .01rem solid #151a34
+}
+
+.top-part .component-select.active .select-text {
+    background: #0f132c
+}
+
+.top-part .component-select.lineup-mode-select {
+    width: 1.1rem;
+    margin-left: 0;
+    margin-right: .2rem
+}
+
+.top-part .upload-box {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    margin-left: auto;
+    margin-right: 0
+}
+
+.top-part .upload-box .input-placeholder {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: .2rem;
+    height: .4rem;
+    line-height: .4rem;
+    color: #813b1b;
+    font-size: .14rem;
+    pointer-events: none
+}
+
+.top-part .upload-box .input-name {
+    flex-grow: 1;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: .4rem;
+    line-height: .4rem;
+    font-size: .14rem;
+    background: #191d24;
+    color: #b59758;
+    padding: 0 .2rem;
+    border: 1px solid #313537;
+    box-sizing: border-box;
+    -webkit-transition: border-color .3s;
+    -moz-transition: border-color .3s;
+    -o-transition: border-color .3s;
+    transition: border-color .3s
+}
+
+.top-part .upload-box .input-name:-ms-input-placeholder,.top-part .upload-box .input-name::-moz-placeholder,.top-part .upload-box .input-name::-webkit-input-placeholder,.top-part .upload-box .input-name::input-placeholder {
+    color: #7e807d
+}
+
+.top-part .upload-box .input-name:focus,.top-part .upload-box .input-name:hover {
+    border-color: #b59758
+}
+
+.top-part .upload-box .lineup-type-select {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .2rem;
+    width: 1.44rem
+}
+
+.top-part .upload-box .lineup-type-select .select-text {
+    height: .4rem;
+    line-height: .38rem
+}
+
+.top-part .upload-box .lineup-type-select .select-options-wrap {
+    top: .39rem
+}
+
+.top-part .upload-box .upload-box-btn {
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    background: 0 0;
+    font-size: .14rem;
+    width: .81rem;
+    height: .32rem;
+    line-height: .32rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: .03rem;
+    text-align: center;
+    position: relative;
+    border-color: rgba(255,255,255,.2);
+    margin-left: .2rem
+}
+
+.top-part .upload-box .upload-box-btn.on,.top-part .upload-box .upload-box-btn:hover {
+    background: #c174e8;
+    border-color: rgba(255,255,255,.4);
+    color: #fff;
+    z-index: 2
+}
+
+.top-part .upload-box .upload-box-btn.forbid {
+    cursor: not-allowed
+}
+
+.top-part .upload-box .forbid,.top-part .upload-box .input-btn {
+    color: #f1f2f8;
+    background-color: #c174e8
+}
+
+.top-part .upload-box .forbid.on,.top-part .upload-box .forbid:hover,.top-part .upload-box .input-btn.on,.top-part .upload-box .input-btn:hover {
+    color: #fff
+}
+
+.top-part .btn-share-img {
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    background: 0 0;
+    font-size: .14rem;
+    width: .81rem;
+    height: .32rem;
+    line-height: .32rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: .03rem;
+    text-align: center;
+    position: relative;
+    color: #f1f2f8;
+    background-color: #c174e8;
+    margin-left: .2rem
+}
+
+.top-part .btn-share-img.on,.top-part .btn-share-img:hover {
+    background: #c174e8;
+    border-color: rgba(255,255,255,.4);
+    color: #fff;
+    z-index: 2
+}
+
+.top-part .btn-share-img.on,.top-part .btn-share-img:hover {
+    color: #fff
+}
+
+.top-part .btn-share-img.to-right {
+    margin-left: auto;
+    margin-right: 0
+}
+
+.top-part .btn-share-img.to-top {
+    margin-top: -.4rem
+}
+
+.page-simulator {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    margin-top: .3rem
+}
+
+.page-simulator .component-synergy {
+    margin: 0 .2rem .15rem 0
+}
+
+.page-simulator .box-head {
+    padding-bottom: .3rem;
+    border-bottom: 1px solid #1a1f3a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.page-simulator .box-head .box-title {
+    color: #f1f2f8;
+    font-weight: 700;
+    font-size: .16rem
+}
+
+.page-simulator .box-head .box-desc {
+    font-size: .14rem;
+    color: #4e5672
+}
+
+.page-simulator .box-head .box-desc .sign {
+    position: relative;
+    top: .03rem;
+    font-size: .16rem;
+    margin-right: .02rem
+}
+
+.simulator-left {
+    width: 23.5%
+}
+
+.simulator-left .filter-box {
+    height: .4rem
+}
+
+.simulator-left .simulator-left-box {
+    background: rgba(26,31,58,.5);
+    padding: .3rem;
+    border-radius: .1rem
+}
+
+.simulator-left .simulator-left-box>.c-line {
+    display: block;
+    width: 100%;
+    height: .01rem;
+    background-color: #1a1f3a;
+    margin-top: .25rem;
+    margin-bottom: .3rem
+}
+
+.simulator-left .simulator-left-box:first-child {
+    padding: .25rem .3rem
+}
+
+.simulator-left .simulator-left-box+.simulator-left-box {
+    margin-top: .2rem
+}
+
+.simulator-left .switch-data-types {
+    display: flex;
+    align-items: center
+}
+
+.simulator-left .switch-data-types>a {
+    font-size: .16rem;
+    color: #4e5672;
+    line-height: .26rem
+}
+
+.simulator-left .switch-data-types>a.on {
+    font-weight: 700;
+    color: #f1f2f8
+}
+
+.simulator-left .switch-data-types>a+a {
+    margin-left: .57rem
+}
+
+.simulator-left .filter-type-box {
+    display: flex;
+    margin-top: .2rem;
+    width: 100%
+}
+
+.simulator-left .filter-type-box>.component-select {
+    width: 33.33%;
+    height: .36rem
+}
+
+.simulator-left .filter-type-box>.component-select>.select-text {
+    width: 100%;
+    height: 100%;
+    line-height: .34rem;
+    border-color: #2f3555;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.simulator-left .filter-type-box>.component-select>.select-text::after {
+    background-position: -2.18rem -.61rem;
+    width: .11rem;
+    height: .08rem;
+    margin-top: -.04rem
+}
+
+.simulator-left .filter-type-box>.component-select .select-options>li {
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.simulator-left .filter-type-box>.component-select+.component-select {
+    margin-left: -.01rem
+}
+
+.simulator-left .filter-type-box>.component-select:first-of-type>.select-text {
+    border-top-left-radius: .03rem;
+    border-bottom-left-radius: .03rem
+}
+
+.simulator-left .filter-type-box>.component-select:last-of-type>.select-text {
+    border-top-right-radius: .03rem;
+    border-bottom-right-radius: .03rem
+}
+
+.simulator-left .filter-type-box>.component-select.active {
+    z-index: 2
+}
+
+.simulator-left .filter-type-box>.component-select.active .select-text {
+    border-color: #c174e8
+}
+
+.simulator-left .filter-type-box>.component-select:hover {
+    z-index: 2
+}
+
+.simulator-left .filter-type-box>.component-select:hover .select-text {
+    border-color: #c174e8
+}
+
+.simulator-left .switch-type-box {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin: .2rem -.06rem 0
+}
+
+.simulator-left .switch-type-box>a {
+    width: .72rem;
+    height: .36rem;
+    font-size: .14rem;
+    line-height: .34rem;
+    text-align: center;
+    color: #4e5672;
+    border: 1px solid rgba(239,242,245,.1);
+    box-sizing: border-box;
+    border-radius: .04rem;
+    transition: color .3s,background-color .3s,border-color .3s;
+    margin: 0 .06rem .12rem
+}
+
+.simulator-left .switch-type-box>a.on,.simulator-left .switch-type-box>a:hover {
+    color: #fff;
+    background-color: #c174e8;
+    border-color: #c784f2
+}
+
+.simulator-left .switch-type-box>.empty-block {
+    width: .72rem;
+    height: 0;
+    margin: 0 .05rem;
+    pointer-events: none
+}
+
+.simulator-left .filter-chess-wrap ::-webkit-scrollbar,.simulator-left .filter-equipment-wrap ::-webkit-scrollbar {
+    width: .05rem
+}
+
+.simulator-left .filter-equipment-wrap .switch-type-box>a {
+    white-space: nowrap
+}
+
+.simulator-left .chess-list {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin: .2rem -.09rem 0;
+    padding-top: .1rem;
+    width: 108%
+}
+
+.simulator-left .chess-list .component-champion {
+    margin: 0 .09rem .18rem .09rem
+}
+
+.simulator-left .chess-list .component-champion .champion-pic {
+    width: .46rem;
+    height: .46rem;
+    border-radius: .05rem;
+    box-shadow: none
+}
+
+.simulator-left .chess-list>.empty-block {
+    width: .62rem;
+    height: 0;
+    margin: 0 .11rem;
+    pointer-events: none
+}
+
+.simulator-left .chess-list .filter-empty {
+    width: 100%
+}
+
+.simulator-left .equipment-list {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    max-height: 7.4rem;
+    overflow: auto;
+    margin: .1rem -.09rem 0;
+    padding-top: .1rem
+}
+
+.simulator-left .equipment-list .component-equipment {
+    width: .48rem;
+    height: .48rem;
+    margin: 0 .08rem .16rem .08rem
+}
+
+.simulator-left .equipment-list .component-equipment>img {
+    border-radius: .05rem
+}
+
+.simulator-left .equipment-list .component-equipment:hover {
+    border-color: #c174e8
+}
+
+.simulator-left .equipment-list>.empty-block {
+    width: .62rem;
+    height: 0;
+    margin: 0 .11rem;
+    pointer-events: none
+}
+
+.simulator-left .equipment-list .filter-empty {
+    width: 100%
+}
+
+.simulator-left .content-title {
+    color: #f1f2f8;
+    font-weight: 700;
+    font-size: .16rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid #1a1f3a
+}
+
+.simulator-left .search-card-rhythm {
+    margin: 0 -.09rem;
+    padding-top: .3rem
+}
+
+.simulator-left .search-card-rhythm .chess-section {
+    padding-bottom: .1rem;
+    text-align: left;
+}
+
+.simulator-left .chess-section {
+    padding-bottom: .1rem;
+    text-align: left;
+}
+
+.simulator-left .search-card-rhythm .component-champion {
+    margin: 0 .05rem;
+    opacity: .6
+}
+
+.simulator-left .search-card-rhythm .component-champion .champion-pic {
+    width: .36rem;
+    height: .36rem;
+    border-radius: 50%;
+    box-shadow: none
+}
+
+.simulator-left .search-card-rhythm .component-champion.is-new {
+    opacity: 1
+}
+
+.simulator-center {
+    width: 44%
+}
+
+.simulator-center .box-title {
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    font-size: .16rem;
+    font-weight: 700
+}
+
+.simulator-center .upload-info-content {
+    position: relative;
+    margin-top: .3rem
+}
+
+.simulator-center .upload-info-content>input,.simulator-center .upload-info-content>textarea {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: .4rem;
+    line-height: .4rem;
+    font-size: .14rem;
+    background: #191d24;
+    color: #f1f2f8;
+    padding: 0 .11rem;
+    border: 1px solid #1a1f3a;
+    box-sizing: border-box;
+    background: 0 0;
+    border-radius: .03rem;
+    -webkit-transition: border-color .3s;
+    -moz-transition: border-color .3s;
+    -o-transition: border-color .3s;
+    transition: border-color .3s
+}
+
+.simulator-center .upload-info-content>input:focus,.simulator-center .upload-info-content>input:hover,.simulator-center .upload-info-content>textarea:focus,.simulator-center .upload-info-content>textarea:hover {
+    border-color: #c174e8
+}
+
+.simulator-center .upload-info-content>textarea {
+    line-height: .28rem;
+    height: .84rem;
+    resize: none
+}
+
+.simulator-center .upload-info-content>span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: .11rem;
+    height: .28rem;
+    line-height: .28rem;
+    color: #4e5672;
+    font-size: .14rem
+}
+
+.simulator-content {
+    padding: .34rem .27rem .3rem .3rem;
+    background: rgba(26,31,58,.5);
+    border-radius: .1rem;
+    margin: 0 0
+}
+
+.simulator-content:first-child {
+    margin: 0
+}
+
+.simulator-content .content-title {
+    color: #f1f2f8;
+    font-size: .16rem;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-content .content-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 .3rem
+}
+
+.simulator-content .content-head .population {
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    font-size: .14rem;
+    margin-left: .32rem
+}
+
+.simulator-content .head-btn-box .btn-copy {
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    background: 0 0;
+    font-size: .14rem;
+    width: .9rem;
+    height: .32rem;
+    line-height: .32rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: .03rem;
+    text-align: center;
+    position: relative;
+    margin-right: .2rem
+}
+
+.simulator-content .head-btn-box .btn-copy.on,.simulator-content .head-btn-box .btn-copy:hover {
+    background: #c174e8;
+    border-color: rgba(255,255,255,.4);
+    color: #fff;
+    z-index: 2
+}
+
+.simulator-content .head-btn-box .btn-reset {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fe3e3e;
+    font-size: .14rem;
+    width: .84rem;
+    height: .32rem;
+    line-height: .32rem;
+    border: 1px solid #fe3e3e;
+    border-radius: .03rem;
+    text-align: center;
+    position: relative
+}
+
+.simulator-content .stage-board-tab {
+    padding: 0 0 .3rem;
+    border-bottom: .01rem solid #1a1f3a
+}
+
+.simulator-content .stage-board-tab>a {
+    display: inline-block;
+    vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    background: 0 0;
+    font-size: .14rem;
+    width: .76rem;
+    height: .32rem;
+    line-height: .32rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: .03rem;
+    text-align: center;
+    position: relative;
+    margin-right: .2rem
+}
+
+.simulator-content .stage-board-tab>a.on,.simulator-content .stage-board-tab>a:hover {
+    background: #c174e8;
+    border-color: rgba(255,255,255,.4);
+    color: #fff;
+    z-index: 2
+}
+
+.simulator-content .stage-board-tab>a .icon-req {
+    margin-right: -.06rem
+}
+
+.simulator-content .stage-board-tab>a.on,.simulator-content .stage-board-tab>a:hover {
+    z-index: 3
+}
+
+.simulator-content .stage-board-tab>a.on .icon-req,.simulator-content .stage-board-tab>a:hover .icon-req {
+    background-position: -.78rem -1.75rem;
+    width: .16rem;
+    height: .16rem
+}
+
+.simulator-content .stage-board-tab>a.btn-plus {
+    margin-right: 0;
+    font-size: .22rem;
+    width: .32rem
+}
+
+.simulator-content .content-feature {
+    padding: .3rem 0
+}
+
+.simulator-content .content-feature .c-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.simulator-content .content-feature .component-select {
+    width: 1.5rem;
+    flex-shrink: 0
+}
+
+.simulator-content .content-feature .component-select .select-text {
+    height: .34rem;
+    line-height: .32rem;
+    border-radius: .03rem;
+    background: 0 0
+}
+
+.simulator-content .content-feature .component-select .select-options-wrap {
+    top: .33rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: .01rem solid #151a34
+}
+
+.simulator-content .content-feature .component-select.active .select-text {
+    background: #0f132c
+}
+
+.simulator-content .content-feature .component-switch-filter {
+    text-align: center;
+    margin-left: auto;
+    margin-right: 0
+}
+
+.simulator-content .upload-info-title {
+    color: #b59758;
+    font-size: .16rem;
+    font-weight: 700
+}
+
+.simulator-content+.simulator-content {
+    margin-top: .2rem
+}
+
+.simulator-board {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 .23rem;
+    user-select: none
+}
+
+.simulator-board .slot-wrap {
+    position: relative;
+    width: 13.3%
+}
+
+.simulator-board .slot-wrap:nth-of-type(22),.simulator-board .slot-wrap:nth-of-type(8) {
+    margin-left: 6.65%
+}
+
+.simulator-board .slot-champion-stars {
+    position: absolute;
+    top: -.09rem;
+    left: 0;
+    width: 100%;
+    height: .17rem;
+    cursor: pointer
+}
+
+.simulator-board .slot-champion-stars>i {
+    position: absolute;
+    top: 0;
+    left: 50%
+}
+
+.simulator-board .slot-champion-stars.star-1>i {
+    left: 50%;
+    margin-left: -.08rem
+}
+
+.simulator-board .slot-champion-stars.star-2>i:nth-of-type(1) {
+    margin-left: -.14rem
+}
+
+.simulator-board .slot-champion-stars.star-2>i:nth-of-type(2) {
+    margin-left: -.02rem
+}
+
+.simulator-board .slot-champion-stars.star-3>i:nth-of-type(1) {
+    margin-left: -.2rem
+}
+
+.simulator-board .slot-champion-stars.star-3>i:nth-of-type(2) {
+    margin-left: -.08rem
+}
+
+.simulator-board .slot-champion-stars.star-3>i:nth-of-type(3) {
+    margin-left: .04rem
+}
+
+.simulator-board .slot-champion {
+    background: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/slot-bg.png) no-repeat;
+    background-size: 100%;
+    width: .59rem;
+    height: .68rem;
+    position: relative;
+    margin: 0 auto
+}
+
+.simulator-board .slot-champion.highlight:before {
+    content: "";
+    background: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/slot-bg-hl.png) no-repeat;
+    background-size: 100%;
+    width: .83rem;
+    height: .93rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+
+.simulator-board .slot-champion.exchange .icon-goop,.simulator-board .slot-champion.exchange .slot-champion-stars,.simulator-board .slot-champion.exchange .slot-equipments,.simulator-board .slot-champion.exchange .slot-icons,.simulator-board .slot-champion.exchange .slot-img {
+    opacity: .4
+}
+
+.simulator-board .slot-champion.exchange:after {
+    content: "";
+    background-position: -1.55rem -1.38rem;
+    width: .28rem;
+    height: .28rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+
+.simulator-board .slot-champion.exchange-on .icon-goop,.simulator-board .slot-champion.exchange-on .slot-champion-stars,.simulator-board .slot-champion.exchange-on .slot-equipments,.simulator-board .slot-champion.exchange-on .slot-icons,.simulator-board .slot-champion.exchange-on .slot-img {
+    opacity: .4
+}
+
+.simulator-board .slot-champion.exchange-on:after {
+    content: "";
+    background-position: -1.26rem -1.38rem;
+    width: .28rem;
+    height: .28rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+
+.simulator-board .slot-equipments {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: .25rem;
+    margin-left: -.23rem;
+    width: .46rem;
+    text-align: center;
+    line-height: 1;
+    z-index: 1;
+    white-space: nowrap
+}
+
+.simulator-board .slot-equipments .equipment {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #333854;
+    width: .14rem;
+    height: .14rem;
+    line-height: .12rem;
+    cursor: pointer
+}
+
+.simulator-board .slot-equipments .equipment>img {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.simulator-board .slot-equipments .equipment>span {
+    display: block;
+    background: #11162e;
+    color: #333854;
+    font-size: .14rem;
+    font-family: '\5FAE\8F6F\96C5\9ED1';
+    font-weight: 700;
+    text-align: center;
+    -webkit-text-stroke: .01rem
+}
+
+.simulator-board .slot-equipments .equipment:hover {
+    box-shadow: 0 0 .08rem 0 #c174e880;
+    border: 1px solid #c174e8
+}
+
+.simulator-board .slot-star-edit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .22rem;
+    cursor: pointer;
+    text-align: center
+}
+
+.simulator-board .slot-star-edit>a {
+    display: inline-block;
+    vertical-align: middle;
+    background: #161a20;
+    border: 1px solid #313537;
+    width: .2rem;
+    height: .2rem;
+    line-height: .2rem;
+    color: #313537;
+    font-size: .14rem;
+    font-family: '\5FAE\8F6F\96C5\9ED1';
+    font-weight: 700
+}
+
+.simulator-board .slot-star-edit>a:first-child {
+    margin-right: -1px
+}
+
+.simulator-board .slot-img,.simulator-board .slot-replace-chess {
+    position: relative;
+    margin: 0 auto;
+    cursor: grab
+}
+
+.simulator-board .slot-img>.bg-img,.simulator-board .slot-replace-chess>.bg-img {
+    display: block;
+    width: .58rem;
+    height: .68rem;
+    margin: 0 auto;
+    -webkit-mask-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/slot-mask-img.png);
+    mask-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/slot-mask-img.png);
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    background-repeat: no-repeat;
+    background-size: .7rem .7rem;
+    background-position: center
+}
+
+.simulator-board .slot-img:after,.simulator-board .slot-replace-chess:after {
+    content: "";
+    background: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/slot-mask-border.png) no-repeat center/100%;
+    width: .59rem;
+    height: .68rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -.295rem
+}
+
+.simulator-board .slot-img.price-0:after,.simulator-board .slot-replace-chess.price-0:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-1.png)
+}
+
+.simulator-board .slot-img.price-1:after,.simulator-board .slot-replace-chess.price-1:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-1.png)
+}
+
+.simulator-board .slot-img.price-2:after,.simulator-board .slot-replace-chess.price-2:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-2.png)
+}
+
+.simulator-board .slot-img.price-3:after,.simulator-board .slot-replace-chess.price-3:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-3.png)
+}
+
+.simulator-board .slot-img.price-4:after,.simulator-board .slot-replace-chess.price-4:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-4.png)
+}
+
+.simulator-board .slot-img.price-5:after,.simulator-board .slot-replace-chess.price-5:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-5.png)
+}
+
+.simulator-board .slot-img.price-6:after,.simulator-board .slot-replace-chess.price-6:after {
+    background-image: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-price-6.png)
+}
+
+.simulator-board .slot-replace-chess {
+    position: absolute;
+    bottom: 0;
+    right: -.03rem;
+    background: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/slot-bg.png) no-repeat;
+    background-size: 100%
+}
+
+.simulator-board .slot-replace-chess>.bg-img {
+    width: .29rem;
+    height: .33rem;
+    background-size: .4rem .4rem
+}
+
+.simulator-board .slot-replace-chess:after {
+    width: .29rem;
+    height: .33rem;
+    margin-left: -.145rem
+}
+
+.simulator-board .slot-icons {
+    position: absolute;
+    top: 50%;
+    left: -.09rem;
+    height: .6rem;
+    margin-top: -.3rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.simulator-board .icon-carry {
+    background: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-carry-hero.png) no-repeat center/100%;
+    width: .2rem;
+    height: .23rem;
+    pointer-events: none
+}
+
+.simulator-board .icon-goop {
+    background: url(//game.gtimg.cn/images/lol/act/a20220802tftsimulator/icon-goop.png) no-repeat center/100%;
+    width: .2rem;
+    height: .24rem;
+    position: absolute;
+    top: .08rem;
+    right: -.06rem
+}
+
+.simulator-right {
+    width: 33%
+}
+
+.simulator-right .simulator-right-box {
+    padding: .3rem;
+    background: rgba(26,31,58,.5);
+    border-radius: .1rem
+}
+
+.simulator-right .simulator-right-box .upload-equipment-list .component-equipment {
+    transition: none
+}
+
+.simulator-right .simulator-right-box .upload-equipment-list .component-equipment .equip-pic {
+    border-width: 1px;
+    border-radius: .05rem
+}
+
+.simulator-right .simulator-right-box .upload-equipment-list .component-equipment::after {
+    display: none
+}
+
+.simulator-right .simulator-right-box .btn-plus {
+    display: inline-block;
+    vertical-align: middle;
+    width: .38rem;
+    height: .38rem;
+    line-height: .34rem;
+    color: #242947;
+    font-size: .26rem;
+    font-weight: 700;
+    font-family: '\5FAE\8F6F\96C5\9ED1';
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #23294a;
+    background: #1a1f3a;
+    -webkit-text-stroke: .005rem;
+    box-sizing: border-box
+}
+
+.simulator-right .simulator-right-box .btn-plus:hover {
+    border-color: #c174e8
+}
+
+.simulator-right .simulator-right-box .component-champion .champion-pic {
+    width: .36rem;
+    height: .36rem
+}
+
+.simulator-right .simulator-right-box .upload-equipment-list {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .simulator-right-box .upload-equipment-list .btn-plus {
+    border-radius: .05rem
+}
+
+.simulator-right .simulator-right-box .upload-info-content {
+    position: relative
+}
+
+.simulator-right .simulator-right-box .upload-info-content>input,.simulator-right .simulator-right-box .upload-info-content>textarea {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: .4rem;
+    line-height: .4rem;
+    font-size: .14rem;
+    background: #191d24;
+    color: #f1f2f8;
+    padding: 0 .11rem;
+    border: 1px solid #1a1f3a;
+    box-sizing: border-box;
+    background: 0 0;
+    border-radius: .03rem;
+    -webkit-transition: border-color .3s;
+    -moz-transition: border-color .3s;
+    -o-transition: border-color .3s;
+    transition: border-color .3s
+}
+
+.simulator-right .simulator-right-box .upload-info-content>input:focus,.simulator-right .simulator-right-box .upload-info-content>input:hover,.simulator-right .simulator-right-box .upload-info-content>textarea:focus,.simulator-right .simulator-right-box .upload-info-content>textarea:hover {
+    border-color: #c174e8
+}
+
+.simulator-right .simulator-right-box .upload-info-content>textarea {
+    line-height: .28rem;
+    height: .84rem;
+    resize: none
+}
+
+.simulator-right .simulator-right-box .upload-info-content>span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: .11rem;
+    height: .28rem;
+    line-height: .28rem;
+    color: #4e5672;
+    font-size: .14rem
+}
+
+.simulator-right .simulator-right-box+.simulator-right-box {
+    margin-top: .2rem
+}
+
+.simulator-right .upload-equipment-priority {
+    margin: .2rem 0;
+    white-space: nowrap
+}
+
+.simulator-right .upload-equipment-priority .upload-equipment-first-title {
+    width: .6rem;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    font-size: .14rem;
+    margin: 0 .2rem 0 0
+}
+
+.simulator-right .upload-equipment-priority .upload-equipment-list .icon-lineup-arrow-right {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .1rem
+}
+
+.simulator-right .upload-equipment-title {
+    width: .6rem;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    font-size: .14rem;
+    margin-right: .2rem
+}
+
+.simulator-right .upload-equipment-carry {
+    margin: 0 0 .2rem;
+    white-space: nowrap
+}
+
+.simulator-right .upload-equipment-carry .carry-champion {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .upload-equipment-carry .carry-champion .btn-plus {
+    border-radius: 50%
+}
+
+.simulator-right .upload-equipment-carry .carry-champion-equip {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .upload-equipment-carry .carry-champion-equip li {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .upload-equipment-carry .carry-champion-equip li>.upload-equipment-title {
+    width: auto;
+    color: #4e5672;
+    margin-left: .3rem
+}
+
+.simulator-right .upload-equipment-carry .carry-champion-equip li>.upload-equipment-list {
+    text-align: center
+}
+
+.simulator-right .upload-equipment-carry .carry-champion-equip li>.upload-equipment-list+.upload-equipment-list {
+    margin-left: .1rem
+}
+
+.simulator-right .upload-equipment-carry .carry-champion-equip li>.icon-lineup-arrow-right {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .07rem 0 -.15rem
+}
+
+.simulator-right .upload-equipment-other .other-equip-title {
+    display: inline-block;
+    vertical-align: top;
+    width: .6rem;
+    color: #f1f2f8;
+    font-size: .14rem;
+    margin: .1rem .2rem .1rem 0;
+    line-height: 1.2
+}
+
+.simulator-right .upload-equipment-other .upload-equipment-title {
+    width: auto;
+    color: #4e5672;
+    margin-left: .3rem
+}
+
+.simulator-right .upload-equipment-other .other-equip-list {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .upload-equipment-other .other-equip-list .upload-equipment-list+.upload-equipment-list {
+    margin-left: .1rem
+}
+
+.simulator-right .upload-equipment-other .other-equip {
+    margin: 0 0 .2rem
+}
+
+.simulator-right .upload-equipment-other .other-equip .component-equipment+.component-equipment {
+    margin-left: .1rem
+}
+
+.simulator-right .upload-equipment-other .other-equip .icon-lineup-arrow-right {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .1rem
+}
+
+.simulator-right .playbook-galaxy-wrapper {
+    margin: .2rem 0
+}
+
+.simulator-right .playbook-galaxy-wrapper>div {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .playbook-galaxy-wrapper .mod-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: .14rem;
+    color: #f1f2f8
+}
+
+.simulator-right .playbook-galaxy-wrapper .item-wrap {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .2rem
+}
+
+.simulator-right .playbook-galaxy-wrapper .item-wrap .btn-plus {
+    border-radius: 50%
+}
+
+.simulator-right .playbook-galaxy-wrapper .item-wrap+.item-wrap {
+    margin-left: .14rem
+}
+
+.simulator-right .hex-wrapper {
+    margin-top: .2rem
+}
+
+.simulator-right .hex-wrapper .mod-title {
+    font-size: .14rem;
+    color: #f1f2f8
+}
+
+.simulator-right .upload-hex-list {
+    margin: .2rem 0;
+    white-space: nowrap
+}
+
+.simulator-right .upload-hex-list>li {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.simulator-right .upload-hex-list>li+li {
+    margin-left: .3rem
+}
+
+.simulator-right .upload-hex-list .upload-hex-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: .14rem;
+    color: #4e5672
+}
+
+.simulator-right .upload-hex-list .upload-hex-wrap {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: .2rem
+}
+
+.simulator-right .upload-hex-list .upload-hex-wrap+.upload-hex-wrap {
+    margin-left: .14rem
+}
+
+.simulator-right .upload-hex-list .upload-hex-wrap .btn-plus {
+    border-radius: 50%
+}
+
+.simulator-right .upload-champion-list {
+    margin-top: .2rem
+}
+
+.simulator-right .upload-champion-list li {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center
+}
+
+.simulator-right .upload-champion-list li .component-champion {
+    width: auto;
+    margin: 0;
+    cursor: pointer
+}
+
+.simulator-right .upload-champion-list li>.btn-plus {
+    border-radius: 50%
+}
+
+.simulator-right .upload-champion-list li+li {
+    margin-left: .2rem
+}
+
+.simulator-right .upload-champion-list .btn-vanguard {
+    display: block;
+    width: .26rem;
+    height: .26rem;
+    border: 1px solid #313537;
+    background: #161a20;
+    border-radius: 50%;
+    margin: .1rem auto 0;
+    position: relative
+}
+
+.simulator-right .upload-champion-list .btn-vanguard>i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    width: .2rem;
+    height: .2rem
+}
+
+.simulator-right .btn-add {
+    font-size: .14rem;
+    border: .01rem solid #f1f2f8;
+    border-radius: .03rem;
+    color: #f1f2f8;
+    padding: .05rem .12rem;
+    margin: -.05rem 0
+}
+
+.simulator-right .upload-vanguard .vanguard-item {
+    position: relative;
+    display: block;
+    line-height: 1;
+    margin-top: .2rem;
+    white-space: nowrap
+}
+
+.simulator-right .upload-vanguard .vanguard-item .champion-icons {
+    left: -.06rem;
+    bottom: .12rem
+}
+
+.simulator-right .upload-vanguard .vanguard-item .icon-vanguard {
+    width: .15rem;
+    height: .15rem
+}
+
+.simulator-right .upload-vanguard .icon-lineup-arrow-right {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin: 0 .1rem
+}
+
+.simulator-right .upload-vanguard .vanguard-left {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.simulator-right .upload-vanguard .vanguard-right {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.simulator-right .upload-vanguard .vanguard-right .vanguard-title {
+    margin-left: .2rem
+}
+
+.simulator-right .upload-vanguard .vanguard-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: .14rem;
+    color: #4e5672;
+    margin-right: .2rem
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select {
+    display: inline-block;
+    vertical-align: middle;
+    background-position: -.31rem -1.01rem;
+    width: .32rem;
+    height: .36rem;
+    line-height: .36rem;
+    text-align: center;
+    position: relative;
+    margin-right: .05rem
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select>i {
+    display: block;
+    width: .32rem;
+    height: .36rem;
+    overflow: hidden;
+    position: relative
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select>i>img {
+    width: .16rem;
+    position: absolute;
+    top: 50%;
+    left: -.32rem;
+    transform: translate(0,-50%);
+    -webkit-filter: drop-shadow(#4e5672 .4rem 0);
+    filter: drop-shadow(#4e5672 .4rem 0)
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select>span {
+    color: #c174e8;
+    font-size: .14rem;
+    position: absolute;
+    top: -.3rem;
+    left: 50%;
+    margin-left: -.5rem;
+    width: 1rem;
+    height: .24rem;
+    line-height: .24rem;
+    border: 1px solid #c174e8;
+    background: #1a1f3a;
+    border-radius: .03rem;
+    display: none;
+    z-index: 5
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select:hover {
+    background-position: .02rem -1.01rem;
+    width: .32rem;
+    height: .36rem
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select:hover>i>img {
+    -webkit-filter: drop-shadow(#000 .4rem 0);
+    filter: drop-shadow(#000 .4rem 0)
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select:hover>span {
+    display: block
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select.on {
+    background-position: .02rem -1.01rem;
+    width: .32rem;
+    height: .36rem
+}
+
+.simulator-right .upload-vanguard .vanguard-synergy-list .synergy-select.on>i>img {
+    -webkit-filter: drop-shadow(#000 .4rem 0);
+    filter: drop-shadow(#000 .4rem 0)
+}
+
+.simulator-right .upload-vanguard .btn-plus {
+    border-radius: 50%
+}
+
+.simulator-right .upload-replace-list li {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: .2rem;
+    margin-right: .4rem
+}
+
+.simulator-right .upload-replace-list li .component-champion {
+    margin: 0;
+    cursor: pointer
+}
+
+.simulator-right .upload-replace-list li .component-champion+.component-champion {
+    margin-left: .1rem
+}
+
+.simulator-right .upload-replace-list li .btn-plus {
+    border-radius: 50%
+}
+
+.simulator-right .upload-replace-list .alternative-item {
+    position: relative;
+    display: block;
+    line-height: 1
+}
+
+.simulator-right .upload-replace-list .alternative-item .champion-name {
+    display: none;
+    position: absolute;
+    top: .56rem;
+    left: 0;
+    width: 100%
+}
+
+.simulator-right .upload-replace-list .alternative-item .icon-vanguard {
+    width: .18rem;
+    height: .18rem;
+    right: -.05rem
+}
+
+.simulator-right .upload-replace-list .icon-lineup-arrow-right {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin: 0 .1rem
+}
+
+.simulator-right .upload-replace-list .alternative-left {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.simulator-right .upload-replace-list .alternative-right {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.simulator-right .upload-replace-list .alternative-right .alternative-title {
+    margin-left: .2rem
+}
+
+.simulator-right .playable-cond-wrap {
+    padding: .2rem 0 0
+}
+
+.simulator-right .playable-cond-wrap .playable-cond-title {
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f2f8;
+    font-size: .14rem
+}
+
+.simulator-right .playable-cond-wrap .equip-wrap,.simulator-right .playable-cond-wrap .item-wrap {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: .2rem
+}
+
+.simulator-right .playable-cond-wrap .equip-wrap .component-equipment .equip-pic {
+    border-width: 1px
+}
+
+.simulator-right .playable-cond-wrap .equip-wrap .btn-plus {
+    border-radius: .05rem
+}
+
+.simulator-synergy {
+    min-height: .44rem;
+    margin-top: .3rem;
+    margin-bottom: -.15rem;
+    position: relative
+}
+
+.simulator-synergy .simulator-delete-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3e1a1a;
+    border: 2px dashed #c03d3d;
+    border-radius: .08rem;
+    z-index: 3
+}
+
+.simulator-synergy .simulator-delete-area:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    background-position: -.97rem -1.38rem;
+    width: .28rem;
+    height: .28rem
+}
+
+.component-select .select-text {
+    position: relative;
+    display: block;
+    height: .35rem;
+    line-height: .33rem;
+    background: #0f132c;
+    font-size: .14rem;
+    color: #4e5672;
+    border: 1px solid #313537;
+    box-sizing: border-box;
+    -webkit-transition: border-color .3s;
+    -moz-transition: border-color .3s;
+    -o-transition: border-color .3s;
+    transition: border-color .3s
+}
+
+.component-select .select-text:after {
+    content: "";
+    background-position: -1.63rem -1.22rem;
+    width: .16rem;
+    height: .1rem;
+    position: absolute;
+    top: 50%;
+    right: .13rem;
+    margin-top: -.05rem
+}
+
+.component-select:hover .select-text {
+    border-color: #c174e8!important
+}
+
+.component-select.selected .select-text {
+    color: #f1f2f8!important
+}
+
+.component-select.active .select-text {
+    border-color: #c174e8!important;
+    border-bottom-width: 0!important
+}
+
+.component-select .select-options-wrap {
+    position: absolute;
+    top: .33rem;
+    left: 0;
+    width: 100%;
+    background: #0f132c;
+    border: .01rem solid #2f3555;
+    border-top-width: 0;
+    border-radius: .03rem;
+    box-sizing: border-box;
+    -webkit-transition: opacity .3s,border-color .3s;
+    -moz-transition: opacity .3s,border-color .3s;
+    -o-transition: opacity .3s,border-color .3s;
+    transition: opacity .3s,border-color .3s;
+    visibility: hidden;
+    opacity: 0
+}
+
+.component-select .select-options-wrap::-webkit-scrollbar {
+    width: 5px;
+    height: 5px
+}
+
+.component-select .select-options-wrap::-webkit-scrollbar-thumb {
+    border-radius: 3px
+}
+
+.component-select .select-options {
+    margin: 2px 0 0;
+    width: calc(100% - 2px);
+    max-height: 1.99rem;
+    overflow: auto
+}
+
+.component-select .select-options li {
+    height: .39rem;
+    line-height: .39rem;
+    color: #4e5672;
+    font-size: .14rem
+}
+
+.component-select .select-options li:hover {
+    color: #c174e8;
+    background-color: rgba(193,116,232,.06)
+}
+
 
 @media (max-width: 500px) {
     .content {
         transform:scale(0.25);
         transform-origin:top left;
         width: max-content;
+    }
+}
+
+@media screen and (min-width: 1980px) {
+    .simulator-left .simulator-left-content .component-champion {
+        width:20%
+    }
+
+    .simulator-left .stage-champion-list li {
+        width: 20%
+    }
+
+    .simulator-left .upload-champion-list li {
+        width: 20%
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    .simulator-left .chess-list .component-champion {
+        margin:0 .08rem .16rem .08rem
     }
 }
 

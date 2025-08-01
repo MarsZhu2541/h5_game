@@ -5,17 +5,18 @@ const App = {
             pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s14/6/lineup_detail_total.json?v=9689947",
-            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s15//6/lineup_detail_total.json?v=9744524",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.15-2025.S15/chess.js",
             hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
             equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
             jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
             raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
+            fruitUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.15-2025.S15/fruit.js",
             adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/adventure.js",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
-            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s14/624x318/",
+            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s15/624x318/",
             goopUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/goop.js",
-            nodeJsURL: "https://503666666.cn:8000/",
+            nodeJsURL: "https://139.196.93.191:8000/",
             dialogVisible: false,
             dialogContent: "",
             chessMap: {},
@@ -27,8 +28,10 @@ const App = {
             raceMap: {},
             adventureList: [],
             goopList: [],
+            fruitList: [],
             sortedHeroes: [],
             dialogTitle: "",
+            boardData: [],
         }
     },
     mounted() {
@@ -43,6 +46,8 @@ const App = {
 
         // 激活导航位置
         this.setSidebarActive("lineup");
+        this.boardData = this.getResetBoardData();
+
     },
     methods: {
         getLineupList() {
@@ -149,6 +154,23 @@ const App = {
             return list.sort(this.compareByPrice)
 
         },
+        async getFruitList() {
+            rawData = {}
+            list = []
+            await axios.get(this.fruitUrl)
+                       .then(res => {
+                           rawData = res.data.data
+                       })
+                       .catch(err => {
+                           console.log('错误' + err)
+                       })
+            for (i in rawData) {
+                // console.log(rawData[i])
+                list.push(rawData[i])
+            }
+            return list
+
+        },
         async getChessMap() {
             rawData = {}
             chessMap = {}
@@ -232,14 +254,15 @@ const App = {
             }
         },
         async fetchData() {
-            const [hexMap, equipMap, jobMap, raceMap, chessMap, adventureList, goopList] = await Promise.all([
+            const [hexMap, equipMap, jobMap, raceMap, chessMap, fruitList] = await Promise.all([
                 this.getHexMap(),
                 this.getEquipMap(),
                 this.getJobMap(),
                 this.getRaceMap(),
                 this.getChessMap(),
-                this.getAdventureList(),
-                this.getGoopList()
+                // this.getAdventureList(),
+                // this.getGoopList(),
+                this.getFruitList()
             ]);
 
             this.hexMap = hexMap;
@@ -247,8 +270,9 @@ const App = {
             this.jobMap = jobMap;
             this.raceMap = raceMap;
             this.chessMap = chessMap;
-            this.adventureList = adventureList;
-            this.goopList = goopList;
+            // this.adventureList = adventureList;
+            // this.goopList = goopList;
+            this.fruitList = fruitList;
 
         },
         async addCustomData() {
@@ -470,6 +494,8 @@ const App = {
                     axios.get(that.nodeJsURL + "jobRanking")
                         .then(res => {
                             res.data.forEach(item => {
+                                console.log(item)
+
                                 job = {}
                                 jobList = []
                                 item.feature.split(";").forEach(feature => {
@@ -494,6 +520,7 @@ const App = {
                     axios.get(that.nodeJsURL + "heroRanking")
                         .then(res => {
                             res.data.forEach(item => {
+                                console.log(item)
                                 item.name = chessMap[item.chessId].displayName
                             })
                             // console.log(res.data)
@@ -513,6 +540,38 @@ const App = {
                 console.log("getHeroesByJobId error:" + this.jobIndexForChessMap[jobId])
             }
 
+        },
+        getFilterChampionList() {
+            filterChampionList = []
+            for (let i = 0; i <10; i++) {
+                filterChampionList[i]= []
+            }
+            Object.values(chessMap).forEach((hero) => {
+                if(hero.price>0){
+                    hero.chessPriceClass = "component-champion cost" + hero.price
+                    filterChampionList[hero.price].push(hero)
+                }
+            });
+            return filterChampionList.slice(1);
+
+        },
+        getResetBoardData: function () {
+            var tmpList = [];
+            for (var i = 0; i < 28; i++) {
+                tmpList.push({
+                                 index: i,
+                                 chessId: null,
+                                 dataChess: null,
+                                 set_avatar_path: null,
+                                 star: 1,
+                                 listCatchEquip: [],
+                                 equipMainAndBackup: { main: new Array(2), backup: new Array(3) },
+                                 isCarryChampion: false,
+                                 $typeChess: null,
+                                 replaceStageChess: null
+                             });
+            }
+            return tmpList;
         },
         showMessage(type, msg) {
             this.$message({
