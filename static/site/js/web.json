@@ -10,6 +10,15 @@
   },
   {
     "kind": "web_0",
+    "id": 0,
+    "title": "十分钟到黎明",
+    "href": "10minutestilldawn/index.html",
+    "slogan": "十分钟到黎明",
+    "kind_name": "游戏",
+    "star": null
+  },
+  {
+    "kind": "web_0",
     "id": 2,
     "title": "黑白棋",
     "href": "heibaiqi/index.html",
