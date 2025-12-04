@@ -5,16 +5,16 @@ const App = {
             pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s15//6/lineup_detail_total.json?v=9744524",
-            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.15-2025.S15/chess.js",
-            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
-            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
-            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js",
-            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js",
-            fruitUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.15-2025.S15/fruit.js",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/lineupJson/s16/6/lineup_detail_total.json?v=9804579",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.24-2025.S16/chess.js",
+            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.24-2025.S16/hex.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.24-2025.S16/equip.js",
+            jobUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.24-2025.S16/job.js",
+            raceUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.24-2025.S16/race.js",
+            fruitUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/15.15-2025.S16/fruit.js",
             adventureUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/adventure.js",
             heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
-            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s15/624x318/",
+            heroMapImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s16/624x318/",
             goopUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/goop.js",
             nodeJsURL: "https://139.196.93.191:8000/",
             dialogVisible: false,
@@ -206,6 +206,7 @@ const App = {
                 }
             }
             this.sortedHeroes = Object.values(chessMap).filter(c => c.price > 0).sort((a, b) => a.price - b.price)
+            console.log(chessMap)
             return chessMap
         },
         async getHexMap() {
