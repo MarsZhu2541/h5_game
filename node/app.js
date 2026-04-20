@@ -115,11 +115,11 @@ app.get('/equipRanking', function (req, res) {
         })
 })
 
-const options = {
-    key: fs.readFileSync(path.join(__dirname, '503666666.cn.key')), // 私钥文件
-    cert: fs.readFileSync(path.join(__dirname, '503666666.cn.pem')) // 证书文件
-};
-const server = https.createServer(options, app);
+// const options = {
+//     key: fs.readFileSync(path.join(__dirname, '503666666.cn.key')), // 私钥文件
+//     cert: fs.readFileSync(path.join(__dirname, '503666666.cn.pem')) // 证书文件
+// };
+const server = http.createServer(app);
 
 
 server.listen(PORT);

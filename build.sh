@@ -1,11 +1,19 @@
 #!/bin/bash
+set -euo pipefail
 
-#docker stop gamecollection
-#docker rm gamecollection
-rm gamecollection_cdn.tar
-docker build --platform linux/amd64 -t marszhu2541/gamecollection:cdn .
-docker save marszhu2541/gamecollection:cdn >gamecollection_cdn.tar
-scp gamecollection_cdn.tar Mars@139.196.93.191:/home/Mars/gamecollection_cdn.tar
-#docker push marszhu2541/gamecollection:cdn
-#docker run --name gamecollection -p 80:80 -p 443:443 -d marszhu2541/gamecollection:cdn
+# 云顶前端：先本地构建，镜像内只 COPY dist（Dockerfile 不再含 node 构建阶段）
+(
+  cd "$(dirname "$0")/yunding"
+  npm ci
+  npm run build
+)
 
+# 同名容器若已存在，docker run 会直接失败，浏览器仍指向旧容器；先删再跑
+docker rm -f gamecollection 2>/dev/null || true
+rm -f gamecollection_s17.tar
+docker build --platform linux/amd64 -t marszhu2541/gamecollection:s17 .
+# docker save marszhu2541/gamecollection:s17 >gamecollection_s17.tar
+# scp gamecollection_s17.tar Mars@139.196.93.191:/home/Mars/gamecollection_s17.tar
+# docker push marszhu2541/gamecollection:cdn
+# 标签名与 Hub 一致仅为了方便 push；本地刚 build 的镜像优先，不主动 pull
+docker run --name gamecollection -p 80:80 -p 443:443 -d marszhu2541/gamecollection:s17
