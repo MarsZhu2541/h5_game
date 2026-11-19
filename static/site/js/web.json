@@ -1,11 +1,47 @@
 [
   {
     "kind": "web_0",
+    "id": 11,
+    "title": "SHIFT",
+    "href": "shift/index.html",
+    "slogan": "Game Off 2026 · shapeshift runner",
+    "kind_name": "游戏",
+    "star": null
+  },
+  {
+    "kind": "web_0",
     "id": 1,
     "title": "云顶之弈攻略",
     "href": "yunding/index.html",
     "slogan": "云顶之弈数据可视化网站",
     "kind_name": "游戏攻略",
+    "star": null
+  },
+  {
+    "kind": "web_0",
+    "id": -3,
+    "title": "杀戮尖塔网页版",
+    "href": "sts/index.html",
+    "slogan": "杀戮尖塔网页版",
+    "kind_name": "游戏",
+    "star": null
+  },
+  {
+    "kind": "web_0",
+    "id": -2,
+    "title": "Deepseek harness",
+    "href": "deepseek-harness/index.html",
+    "slogan": "Deepseek harness",
+    "kind_name": "AI",
+    "star": null
+  },
+  {
+    "kind": "web_0",
+    "id": -1,
+    "title": "AI Agent",
+    "href": "assistantui/index.html",
+    "slogan": "AI Agent",
+    "kind_name": "AI",
     "star": null
   },
   {

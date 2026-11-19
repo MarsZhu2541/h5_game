@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杀戮尖塔风格 - 3D模型对战</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="game-container">
+    <div class="top-bar">
+        <div class="floor-info">🏰 第 1 层 - 遭遇战</div>
+        <div class="deck-info">抽牌堆: <span id="draw-pile">5</span> | 弃牌堆: <span id="discard-pile">0</span></div>
+    </div>
+    <div class="battle-area">
+        <div class="player-side" id="player-side">
+            <div class="model-viewport" id="player-viewport">
+                <div class="model-loading" id="player-loading">加载模型中...</div>
+            </div>
+            <div class="status-bars">
+                <div class="bar-container">
+                    <div class="bar-fill hp" id="player-hp-bar" style="width:100%;"></div>
+                    <div class="bar-text" id="player-hp-text">80 / 80</div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill block" id="player-block-bar" style="width:0%;"></div>
+                    <div class="bar-text" id="player-block-text">护盾: 0</div>
+                </div>
+            </div>
+        </div>
+        <div class="center-vs">
+            <div class="turn-indicator" id="turn-indicator">⚔️ 你的回合</div>
+            <div style="font-size:40px; opacity:0.5;">VS</div>
+        </div>
+        <div class="enemy-side" id="enemy-side">
+            <div class="intent-area" id="intent-area">
+                <span class="intent-icon" id="intent-icon">🗡️</span>
+                <span class="intent-text" id="intent-text">攻击</span>
+                <span class="intent-damage" id="intent-damage">11</span>
+            </div>
+            <div class="model-viewport" id="enemy-viewport">
+                <div class="model-loading" id="enemy-loading">加载模型中...</div>
+            </div>
+            <div class="status-bars">
+                <div class="bar-container">
+                    <div class="bar-fill hp" id="enemy-hp-bar" style="width:100%;"></div>
+                    <div class="bar-text" id="enemy-hp-text">50 / 50</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hand-area">
+        <div class="energy-orb">
+            <span class="energy-value" id="energy-value">3</span>
+            <span class="energy-label">能量</span>
+        </div>
+        <div class="cards-container" id="cards-container"></div>
+        <button class="end-turn-btn" id="end-turn-btn">结束回合</button>
+    </div>
+    <div class="status-message" id="status-message" style="opacity:0;">准备战斗</div>
+</div>
+
+<script type="module" src="./js/gameState.js"></script>
+<script type="module" src="./js/uiManager.js"></script>
+<script type="module" src="./js/threeManager.js"></script>
+<script type="module" src="./js/gameLogic.js"></script>
+</body>
+</html>

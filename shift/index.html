@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#07090f" />
+    <meta name="description" content="A Game Off 2026 entry. Theme SHIFT: swap between a bike, tank, boat, and plane to cross alleys, potholes, rivers, and barriers." />
+    <title>SHIFT</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="game">
+      <canvas id="view"></canvas>
+      <div id="flash"></div>
+
+      <div id="hud" hidden>
+        <header class="top">
+          <div>
+            <div class="label">Dist</div>
+            <div class="num" id="stat-dist">0m</div>
+          </div>
+          <div id="hearts"></div>
+          <div class="coins">
+            <div class="label">Coins</div>
+            <div class="num" id="stat-coins">0</div>
+          </div>
+        </header>
+        <div id="callout" hidden></div>
+        <div class="spacer"></div>
+        <footer class="dock">
+          <button id="lane-left" type="button" aria-label="Move left">Left</button>
+          <div class="shifter">
+            <div class="dock-label">Shift <span id="combo"></span></div>
+            <div id="form-dock"></div>
+          </div>
+          <button id="lane-right" type="button" aria-label="Move right">Right</button>
+        </footer>
+        <button id="btn-pause" type="button">Pause</button>
+      </div>
+
+      <div id="toast"></div>
+
+      <section id="screen-menu" class="screen">
+        <div class="panel">
+          <p class="kicker">Game Off 2026 · Theme SHIFT</p>
+          <h1>SHIFT</h1>
+          <p class="lead">Shift forms and ride the road. Move left and right as it comes at you.</p>
+          <ul class="legend">
+            <li><i style="background:#2ee59d"></i>Alley · Bike</li>
+            <li><i style="background:#d6e04a"></i>Potholes · Tank</li>
+            <li><i style="background:#3ec1ff"></i>River · Boat</li>
+            <li><i style="background:#ff7a3c"></i>Barrier · Plane</li>
+          </ul>
+          <div class="meta">
+            <span>Best <b id="menu-best">0 m</b></span>
+            <span>Coins <b id="menu-coins">0</b></span>
+          </div>
+          <div class="actions">
+            <button id="btn-play" class="primary" type="button">Run</button>
+            <button id="btn-shop" type="button">Upgrades</button>
+            <button id="btn-help" type="button">How to play</button>
+            <button id="btn-mute" type="button">Sound: on</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-help" class="screen" hidden>
+        <div class="panel">
+          <p class="kicker">Controls</p>
+          <h2>How to shift</h2>
+          <p>Swipe or use the arrow keys to change lanes. Dodge crates and grab coins.</p>
+          <p><b>Shift</b> cycles forms forward, <b>Q</b> cycles back, and <b>1–4</b> select one directly. On a phone, tap the gears at the bottom.</p>
+          <ul class="legend tall">
+            <li><i style="background:#2ee59d"></i>Only a bike fits the alley, and only in the center lane</li>
+            <li><i style="background:#d6e04a"></i>Only tank treads cross the potholes</li>
+            <li><i style="background:#3ec1ff"></i>Only a boat crosses the river. The low bridge stops a plane</li>
+            <li><i style="background:#ff7a3c"></i>Only a plane clears the barriers</li>
+          </ul>
+          <p>The wrong form costs health. A shield blocks one hit. Coins are saved and spent on health, speed, faster shifting, or a stronger form.</p>
+          <button id="btn-help-close" class="primary" type="button">Got it</button>
+        </div>
+      </section>
+
+      <section id="screen-shop" class="screen" hidden>
+        <div class="panel">
+          <div class="shop-head">
+            <div>
+              <p class="kicker">Permanent</p>
+              <h2>Spend coins</h2>
+            </div>
+            <b id="shop-coins" class="num">0</b>
+          </div>
+          <div id="shop-list"></div>
+          <div class="actions">
+            <button id="btn-shop-close" class="primary" type="button">Back</button>
+            <button id="btn-reset" type="button">Reset save</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-pause" class="screen" hidden>
+        <div class="panel">
+          <p class="kicker">Paused</p>
+          <h2>Holding this gear</h2>
+          <div class="actions">
+            <button id="btn-resume" class="primary" type="button">Resume</button>
+            <button id="btn-quit" type="button">End run</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-over" class="screen" hidden>
+        <div class="panel">
+          <p class="kicker" id="over-kicker">Run over</p>
+          <h2 id="over-dist">0 m</h2>
+          <div class="meta">
+            <span>Coins <b id="over-coins">+0</b></span>
+            <span>Best <b id="over-best">0 m</b></span>
+            <span>Chain <b id="over-combo">—</b></span>
+          </div>
+          <div class="actions">
+            <button id="btn-retry" class="primary" type="button">Retry</button>
+            <button id="btn-over-shop" type="button">Upgrades</button>
+            <button id="btn-over-menu" type="button">Title</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="js/game.js"></script>
+  </body>
+</html>
